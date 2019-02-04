@@ -1,5 +1,5 @@
 {
-  "name": "Swift-Foods",
+  "name": "swift-foods",
   "version": "1.0.0",
   "description": "An online platform that brings you the best dishes without hassle",
   "main": "index.js",
@@ -11,9 +11,9 @@
     "start:heroku": "node build/server.js",
     "heroku-postbuild": "npm run build && npm run build:server",
     "build:server": "babel server.js -d build",
-    "start": "webpack-dev-server --mode production --hot --open",
+    "start": "webpack-dev-server --mode development --hot --open",
     "start:dev": "webpack-dev-server --mode development --hot --open",
-    "build": "webpack --mode production",
+    "build": "webpack --mode development",
     "test": "jest  --detectOpenHandles --coverage",
     "test:watch": "jest --watch --coverage",
     "stylelint": "stylelint 'src/styles/**/*.scss'"

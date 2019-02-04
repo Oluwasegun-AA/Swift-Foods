@@ -9,21 +9,21 @@ class Navbar extends Component {
   onClick = (event) => {
     event.preventDefault();
     const {
-      signout,
+      signOut,
       children: {
         props: {
           history
         }
       }
     } = this.props;
-    signout();
+    signOut();
 
     history.push('/');
   }
 
   returnAppropriateNavbar = () => {
     const {
-      signout,
+      signOut,
       currentUser: {
         isAuthenticated
       }
@@ -32,7 +32,7 @@ class Navbar extends Component {
     if (isAuthenticated) {
       return (
         <NavBarAuth
-          signout={signout}
+          signOut={signOut}
         />
       );
     }
@@ -56,7 +56,7 @@ const mapStateToProps = state => ({
 
 Navbar.propTypes = {
   currentUser: PropTypes.objectOf(PropTypes.string).isRequired,
-  signout: PropTypes.func.isRequired,
+  signOut: PropTypes.func.isRequired,
   children: PropTypes.objectOf(PropTypes.string)
 };
 
@@ -65,7 +65,7 @@ Navbar.defaultProps = {
 };
 
 const mapDispatchToProps = {
-  signout: logout,
+  signOut: logout,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

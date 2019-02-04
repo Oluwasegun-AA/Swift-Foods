@@ -1,0 +1,40 @@
+.socialIcons {
+  text-align: center;
+  font-size: 0px;
+}
+footer {
+  background-color: bisque;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.footerContent {
+  padding-left: 80px;
+  padding-right: 80px;
+}
+.terms {
+  float: left;
+  color: black;
+  font-size: 12px;
+  text-align: center;
+}
+
+.socialIcons {
+  float: right;
+  font-size: 0px;
+}
+
+.socialIcons a img {
+  padding-left: 5px;
+  padding-right: 5px;
+  margin-top: 7px;
+}
+.license {
+  background-color: burlywood;
+  width: 100%;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 15px;
+  text-align: center;
+  align-content: center;
+  bottom: 0;
+}

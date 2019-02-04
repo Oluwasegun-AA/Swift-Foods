@@ -3,9 +3,10 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addFlashMessage, clearFlashMessages } from '../actions/flashActions';
 import { loginRequest } from '../actions/loginActions';
-import { LoginForm } from '../components';
+import { Login, Footer } from '../components';
 import loginValidation from '../utilities/loginValidation';
 import Spinner from '../components/Spinner';
+import NavBar from './Navbar';
 
 /**
  *  Input sign in body form component
@@ -103,23 +104,27 @@ export class LoginPage extends Component {
       errors, isLoading, email, password
     } = this.state;
     return (
-      <div>
-        <LoginForm
-          onInput={this.handleOnInput}
-          onChange={this.handleOnChange}
-          onBlur={this.handleOnBlur}
-          submitDetails={this.handleOnSubmit}
-          errors={errors}
-          isRequestSent={isLoading}
-          email={email}
-          password={password}
-        />
-        <Spinner
-          customSpinnerClass={
+      <span>
+        <NavBar />
+        <div>
+          <Login
+            onInput={this.handleOnInput}
+            onChange={this.handleOnChange}
+            onBlur={this.handleOnBlur}
+            submitDetails={this.handleOnSubmit}
+            errors={errors}
+            isRequestSent={isLoading}
+            email={email}
+            password={password}
+          />
+          <Spinner
+            customSpinnerClass={
             (this.state.isLoading === false) ? 'hide' : ''
           }
-        />
-      </div>
+          />
+        </div>
+        <Footer />
+      </span>
     );
   }
 }

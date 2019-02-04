@@ -1,0 +1,84 @@
+.cartImage {
+  height: 22px;
+  display: flex;
+  color: #ffffff;
+  float: right;
+}
+.cartName,
+.cartWeight{
+  font-size: 16px;
+}
+
+.cartImageAndWeight{
+  display: flex;
+}
+
+.cart{
+  margin-right: 15px;
+}
+
+.menu{
+  margin-right: 15px;
+}
+.cart:hover{
+  border-bottom: solid 5px burlywood;
+}
+
+.navigation > a.menu {
+  font-size:1.07em;
+  margin-top: 13px;
+}
+
+.navigation > span.dropbtn:hover {
+  color:rgb(116, 55, 55);
+}
+
+.dropdown {
+  width: max-content;
+}
+.dropdown:hover{
+  color:rgb(116, 55, 55);
+  border-bottom: solid 5px burlywood;
+}
+
+.dropdown-account{
+  margin-top: 15px;
+  float: right;
+  width: 90px;
+}
+
+.dropdown-avarter{
+  float: right;
+  width: 60px;
+  margin-left: 15px;
+}
+
+.dropdown-content {
+  display: none;
+  background-color: #f2f2f2;
+  border-radius: 3px;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 8px;
+  text-decoration: none;
+  display: block;
+  font-size: 13px;
+  border-radius: 10px;
+}
+
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #ddd;
+  color: black;
+}
+
+.avarter{
+  height: 2.9em;
+  border-radius: 30%;
+}
