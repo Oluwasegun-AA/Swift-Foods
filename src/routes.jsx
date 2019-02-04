@@ -6,14 +6,22 @@ import {
 } from 'react-router-dom';
 
 import {
-  HomePage,
+  LandingPage,
+  ErrorPage,
+  LoginPage,
+  SignupPage,
+  MenuPage
 } from './views';
 
 const routes = (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={HomePage} />
-      <Route exact path="/home" component={HomePage} />
+      <Route exact path="/" component={LandingPage} />
+      <Route exact path="/home" component={LandingPage} />
+      <Route exact path="/login" component={LoginPage} />
+      <Route exact path="/signup" component={SignupPage} />
+      <Route exact path="/menu" component={MenuPage} />
+      <Route component={ErrorPage} />
     </Switch>
   </BrowserRouter>
 );

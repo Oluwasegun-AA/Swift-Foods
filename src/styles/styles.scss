@@ -1,4 +1,10 @@
-// Demo Index SCSS File
+// SCSS Files for all idividual components
 @import './base/settings';
 @import './base/base';
-
+@import './components/LandingPage.scss';
+@import './components/Footer.scss';
+@import './components/NavBarNoAuth.scss';
+@import './components/NavBarAuth.scss';
+@import './components/Error.scss';
+@import './components/LoginPage.scss';
+@import './components/MenuPage.scss';

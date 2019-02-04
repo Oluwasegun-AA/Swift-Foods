@@ -5,8 +5,8 @@ const webpack = require('webpack');
 
 module.exports = (env) => {
   const isProduction = env === 'production';
-  const envVariable = dotenv.config().parsed;
-  // const envVariable = dotenv.load().parsed;
+  const envVariable = dotenv.config();
+  // const envVariable = dotenv.load();
   const envKeys = Object.keys(envVariable).reduce((prev, next) => {
     prev[`process.env.${next}`] = JSON.stringify(envVariable[next]);
     return prev;
@@ -36,7 +36,7 @@ module.exports = (env) => {
           ]
         },
         {
-          test: /\.(gif|png|jpe?g|svg)$/i,
+          test: /\.(gif|png|jpe?g|svg|ico)$/i,
           use: [
             'file-loader?name=images/[name].[ext]',
             {
@@ -60,7 +60,7 @@ module.exports = (env) => {
       historyApiFallback: true
     },
     resolve: {
-      extensions: ['.jsx', '.js', '.png', '.svg']
+      extensions: ['.jsx', '.js', '.png', '.svg', '.ico', '.jpg']
     }
   };
 };

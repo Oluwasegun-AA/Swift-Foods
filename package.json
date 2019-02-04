@@ -1,5 +1,5 @@
 {
-  "name": "Swift-Foods",
+  "name": "swift-foods",
   "version": "1.0.0",
   "description": "An online platform that brings you the best dishes without hassle",
   "main": "index.js",
@@ -11,10 +11,10 @@
     "start:heroku": "node build/server.js",
     "heroku-postbuild": "npm run build && npm run build:server",
     "build:server": "babel server.js -d build",
-    "start": "webpack-dev-server --mode production --hot --open",
+    "start": "webpack-dev-server --mode development --hot --open",
     "start:dev": "webpack-dev-server --mode development --hot --open",
-    "build": "webpack --mode production",
-    "test": "jest  --detectOpenHandles --coverage",
+    "build": "webpack --mode development",
+    "test": "jest  --detectOpenHandles -u --coverage",
     "test:watch": "jest --watch --coverage",
     "stylelint": "stylelint 'src/styles/**/*.scss'"
   },
@@ -24,7 +24,11 @@
     ],
     "setupFiles": [
       "./src/setupTests.js"
-    ]
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/__mocks__/fileMock.js"
+    }
   },
   "repository": {
     "type": "git",

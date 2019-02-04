@@ -1,140 +1,118 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import SubmitButton from './SubmitButton';
-import TextFieldGroup from './TextFieldGroup';
-import FlashMessageList from './FlashMessagesList';
+import PropTypes from 'prop-types';
+import { logo } from '../styles/images';
+import FormInput from './FormInput';
+import Button from './Button';
 
 const SignupForm = ({
-  onChange,
-  errors,
-  onBlur,
-  onInput,
   username,
-  password,
   email,
-  isRequestSent,
+  password,
   confirmPassword,
-  submitDetails,
+  login
 }) => (
-  <div className="signup-container">
-    <div className="signup-row">
-      <div className="sign-up.col1" id="welcome-container">
-        <div id="welcome-text-container" className="text-center">
-          <h2>Writing is an art.</h2>
-          <h3>Explore your creative side at Authors Haven.</h3>
-        </div>
-        <span id="signup-image" />
-      </div>
-      <div className="signup.col2">
-        <div id="form-container">
-
-          <FlashMessageList
-            customAlertClass="signup-custom-alert"
-          />
-
-          <form className="form-horizontal" autoComplete="off">
-            <TextFieldGroup
+  <div className="gridContainer">
+    <div className="gridTop" />
+    <div className="gridRight" />
+    <div className="gridMiddle">
+      <div className="login-container">
+        <form className="login-section">
+          <div className="login-image">
+            <img src={logo} alt="logo" className="login-logo" />
+          </div>
+          <div className="loginParticulars">
+            <span><b>Username</b></span>
+            <FormInput
+              type="text"
               id="username"
-              error={errors && errors.username}
-              placeholder="Username"
-              field="username"
-              value={username}
-              onChange={onChange}
-              onBlur={onBlur}
-              errorFeedbackClass="signup-invalid-feedback"
-              validFeedbackClass="signup-valid-feedback"
-              className="form-control signup-form-input"
-              customFormDivClass="signup-div-class"
-              onInput={onInput}
+              className="username"
+              placeHolder="Enter Username"
+              onchange={username}
             />
-
-            <TextFieldGroup
+            <span id="emailLabel"><b>Email Address</b></span>
+            <FormInput
+              type="text"
               id="email"
-              error={errors && errors.email}
-              placeholder="Email"
-              field="email"
-              value={email}
-              onChange={onChange}
-              onBlur={onBlur}
-              errorFeedbackClass="signup-invalid-feedback"
-              validFeedbackClass="signup-valid-feedback"
-              className="form-control signup-form-input"
-              customFormDivClass="signup-div-class"
-              onInput={onInput}
+              className="email"
+              placeHolder="Enter Email Address"
+              onchange={email}
             />
-
-            <TextFieldGroup
+            <span><b>Password</b></span>
+            <FormInput
+              type="password"
               id="password"
-              error={errors && errors.password}
-              placeholder="Password"
-              field="password"
-              value={password}
-              onChange={onChange}
-              onBlur={onBlur}
-              errorFeedbackClass="signup-invalid-feedback"
-              validFeedbackClass="signup-valid-feedback"
-              className="form-control signup-form-input"
-              customFormDivClass="signup-div-class"
-              type="password"
-              onInput={onInput}
+              className="password"
+              placeHolder="Enter Password"
+              onchange={password}
             />
-
-            <TextFieldGroup
-              id="confirmPassword"
-              error={errors && errors.confirmPassword}
-              placeholder="Confirm Password"
-              field="confirmPassword"
-              value={confirmPassword}
-              onChange={onChange}
-              onBlur={onBlur}
-              errorFeedbackClass="signup-invalid-feedback"
-              validFeedbackClass="signup-valid-feedback"
-              className="form-control signup-form-input"
-              customFormDivClass="signup-div-class"
-              onInput={onInput}
+            <span><b>Confirm Password</b></span>
+            <FormInput
               type="password"
+              id="password"
+              className="password"
+              placeHolder="Enter Password"
+              onchange={confirmPassword}
             />
-
-            <div className="row signup-button-container">
-              <SubmitButton
-                onClick={submitDetails}
-                isRequestSent={isRequestSent}
-                id="signup-page-button"
-                value="Signup"
-                className="btn"
-                columnAttribute=""
+            <span className="showPassword">
+              <input
+                type="checkbox"
+                id="showPassword"
+                className="showPassword"
+                name="remember"
               />
+              <span>Show Password</span>
+            </span>
+            <div className="signupButtonDiv">
+              <Button className="loginBtn" value="Signup" onClick={login} />
             </div>
-
-            <Link to="/login" className="login-link-container">
-              <div className="login-link">Registered? Login instead</div>
-            </Link>
-
-          </form>
-        </div>
+            <div className="errorMessageContainer">
+              <span id="notMember">
+                <span>Already a member?   </span>
+                <Link to="/login"> Login</Link>
+              </span>
+              <div id="errorMessage" className="errorMessage">
+                <span className="notMember">Password must contain :</span>
+                <h3 id="letter" className="invalid">
+                  A
+                  {' '}
+                  <b>Lowercase</b>
+                  {' '}
+                  letter
+                </h3>
+                <h3 id="capital" className="invalid">
+                  A
+                  {' '}
+                  <b>Capital (uppercase)</b>
+                  {' '}
+                  letter
+                </h3>
+                <h3 id="number" className="invalid">
+                  A
+                  {' '}
+                  <b>Number</b>
+                </h3>
+                <h3 id="length" className="invalid">
+                  At least
+                  <b> 8 characters</b>
+                </h3>
+              </div>
+            </div>
+          </div>
+        </form>
       </div>
     </div>
+    <div className="gridLeft" />
+    <div className="gridBottom" />
   </div>
 );
 
 SignupForm.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  username: PropTypes.string.isRequired,
-  errors: PropTypes.oneOfType([
-    PropTypes.string, PropTypes.objectOf(PropTypes.string)]).isRequired,
-  password: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
-  confirmPassword: PropTypes.string.isRequired,
-  submitDetails: PropTypes.func.isRequired,
-  isRequestSent: PropTypes.bool.isRequired,
-  onInput: PropTypes.func,
-  onBlur: PropTypes.func
-};
-
-SignupForm.defaultProps = {
-  onInput: () => null,
-  onBlur: () => null
+  username: PropTypes.func.isRequired,
+  email: PropTypes.func.isRequired,
+  password: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
+  confirmPassword: PropTypes.func.isRequired
 };
 
 export default SignupForm;

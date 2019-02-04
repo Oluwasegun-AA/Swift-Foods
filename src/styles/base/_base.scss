@@ -1,15 +1,13 @@
 // Demo Base Settings
+html,
 body {
-  font-family: 'Reem Kufi', sans-serif;
+  font-family: sans-serif;
+  height: 100%;
+  width: 100%;
+  background-color: #d8cfcf;
 }
 
-.major-color {
-  color: $white;
-  font-family: $font-family;
-  background-color: rgb(255, 255, 255);
-  margin: 0;
-  padding: 0;
-}
+// #c79c9c;
 
 #body {
   margin-top: 0px;
@@ -19,19 +17,18 @@ body {
   display: none;
 }
 
-*:focus, *:active, .btn:focus {
+*:focus,
+*:active,
+.btn:focus {
   outline: 0 !important;
 }
 
 button.btn:focus {
   outline: 0;
 }
-#app, #app > div{
-  height:100%;
-  width: 100%;
-}
 
-.article-header-size {
-  font-weight: bold;
-  font-size: 20px;
+#app,
+#app>div {
+  height: 100%;
+  width: 100%;
 }

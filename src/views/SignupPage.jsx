@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import SignupForm from '../components/SignupForm';
+import { SignupForm, Footer } from '../components';
 import signupValidation from '../utilities/signupValidation';
 import { addFlashMessage, clearFlashMessages } from '../actions/flashActions';
 import { signupUser } from '../actions/signupActions';
-import Spinner from '../components/Spinner';
+import NavBar from './Navbar';
 
 class SignupPage extends Component {
   constructor(props) {
@@ -95,7 +95,8 @@ class SignupPage extends Component {
   render() {
     const { errors } = this.state;
     return (
-      <React.Fragment>
+      <span>
+        <NavBar />
         <SignupForm
           onChange={this.handleOnChange}
           {...this.state}
@@ -104,12 +105,8 @@ class SignupPage extends Component {
           onInput={this.handleOnInput}
           onBlur={this.handleOnBlur}
         />
-        <Spinner
-          customSpinnerClass={
-        (this.state.isRequestSent === false) ? 'hide' : ''
-      }
-        />
-      </React.Fragment>
+        <Footer />
+      </span>
     );
   }
 }

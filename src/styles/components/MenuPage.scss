@@ -1,0 +1,55 @@
+/* Styling for the Menu Sectionof the Webpage*/
+.menuItems {
+  margin: auto;
+  max-width: 90%;
+  max-height: 100%;
+  background: rgba(32, 22, 22, 0.459);
+  border-radius: 10px;
+  padding-top: 20px;
+}
+
+.itemsList {
+  margin: auto;
+  width: 90%;
+  height: 90%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.description {
+  background-color: rgb(226, 226, 206);
+  flex: unset;
+  color: black;
+  font-family: sofia;
+  text-align: center;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.item {
+  width: 150px;
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 46px;
+  margin-Right: 46px;
+  margin-bottom: -50px;
+}
+.itemLogo {
+  height: 115px;
+  padding: 2px;
+  background: white;
+  border-radius: 5px;
+}
+.addToCartBtnDiv{
+  text-align: center;
+}
+
+  /* Styling for the Menu Section of the Webpage*/
+  .addToCartBtn {
+    width: 100%;
+    padding: 6px;
+  }
