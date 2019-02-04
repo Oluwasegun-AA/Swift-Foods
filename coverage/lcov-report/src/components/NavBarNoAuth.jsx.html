@@ -73,62 +73,12 @@
 28
 29
 30
-31
-32
-33
-34
-35
-36
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
-48
-49
-50
-51
-52
-53
-54
-55
-56</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+31</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -155,57 +105,32 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React from 'react';
 import { Link } from 'react-router-dom';
-import LinkButton from './LinkButton';
-import SectionsBar from './SectionsBar';
-import Search from './Search';
+import { logo } from '../styles/images';
 &nbsp;
 const NavBarNoAuth = <span class="fstat-no" title="function not covered" >()</span> =&gt; (
-<span class="cstat-no" title="statement not covered" >  &lt;div&gt;</span>
-    &lt;nav className="navbar navbar-expand-lg"&gt;
-      &lt;Link
-        className="brand-name navbar-brand ml-4"
-        to="/"
-      &gt;
-        {'Author\'s Haven'}
+<span class="cstat-no" title="statement not covered" >  &lt;nav className="navBar"&gt;</span>
+    &lt;div className="headerContent"&gt;
+      &lt;span className="logo"&gt;
+        &lt;Link to="/"&gt;
+          &lt;img src={logo} className="headerLogo" /&gt;
+        &lt;/Link&gt;
+      &lt;/span&gt;
 &nbsp;
-      &lt;/Link&gt;
-      &lt;button
-        className="navbar-toggler navbar-toggler-right collapsed"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navb"
-        aria-expanded="false"
-      &gt;
-        &lt;span className="navbar-toggler-icon" /&gt;
-      &lt;/button&gt;
-&nbsp;
-      &lt;div className="navbar-collapse collapse" id="navb"&gt;
-        &lt;Search /&gt;
-        &lt;ul className="navbar-nav"&gt;
-          &lt;li className="mt-2 nav-item"&gt;
-            &lt;div className="mr-5 ml-5 row"&gt;
-              &lt;LinkButton
-                value="Login"
-                className="btn home-login-btn mr-4"
-                columnAttribute="col-xs-12"
-                to="/login"
-              /&gt;
-              &lt;LinkButton
-                value="Signup"
-                id="home-signup-btn"
-                className="home-login-btn btn"
-                columnAttribute="col-xs-12"
-                to="/signup"
-              /&gt;
-            &lt;/div&gt;
-          &lt;/li&gt;
-        &lt;/ul&gt;
+      &lt;div className="blink-caption"&gt;
+        &lt;p className="text"&gt;
+           Great Taste
+          {' '}
+          &lt;span className="blin blink"&gt;Always&lt;/span&gt;
+        &lt;/p&gt;
       &lt;/div&gt;
-    &lt;/nav&gt;
-    &lt;SectionsBar /&gt;
-  &lt;/div&gt;
-);
 &nbsp;
+      &lt;div className="navigation"&gt;
+        &lt;Link className="signup" to="/signup"&gt;Signup&lt;/Link&gt;
+        &lt;Link className="login" to="/login"&gt;Login&lt;/Link&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/nav&gt;
+);
 &nbsp;
 export default NavBarNoAuth;
 &nbsp;</pre></td></tr>
@@ -214,7 +139,7 @@ export default NavBarNoAuth;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Jan 29 2019 12:51:35 GMT+0100 (West Africa Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Feb 04 2019 10:07:58 GMT+0100 (West Africa Standard Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>
