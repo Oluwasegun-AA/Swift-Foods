@@ -29,7 +29,7 @@ class LandingPage extends Component {
                 <Button
                   onClick={this.handleOnClick}
                   value="Place an Order"
-                  ClassName="landing-page-botton"
+                  className="landing-page-botton"
                 />
               </div>
             </div>
@@ -42,7 +42,10 @@ class LandingPage extends Component {
 }
 
 LandingPage.propTypes = {
-  history: PropTypes.objectOf(PropTypes.string).isRequired,
+  history: PropTypes.objectOf(PropTypes.oneOfType([
+    PropTypes.object, PropTypes.func, PropTypes.string,
+    PropTypes.number
+  ])),
 };
 
 export default withRouter(LandingPage);

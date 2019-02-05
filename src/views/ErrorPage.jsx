@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import {
-  ErrorPage, Footer, NavBarNoAuth
+  ErrorPage, Footer
 } from '../components';
+import NavBar from './Navbar';
 
 class ErrorPageView extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class ErrorPageView extends Component {
   render() {
     return (
       <span>
-        <NavBarNoAuth />
+        <NavBar />
         <ErrorPage />
         <Footer />
       </span>

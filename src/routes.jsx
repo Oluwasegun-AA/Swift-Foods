@@ -4,6 +4,7 @@ import {
   BrowserRouter,
   Switch
 } from 'react-router-dom';
+import HomePageRedirect from './utilities/HomePageRedirect';
 
 import {
   LandingPage,
@@ -20,7 +21,7 @@ const routes = (
       <Route exact path="/home" component={LandingPage} />
       <Route exact path="/login" component={LoginPage} />
       <Route exact path="/signup" component={SignupPage} />
-      <Route exact path="/menu" component={MenuPage} />
+      <Route exact path="/menu" component={HomePageRedirect(MenuPage)} />
       <Route component={ErrorPage} />
     </Switch>
   </BrowserRouter>

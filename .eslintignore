@@ -1,3 +1,5 @@
+node_modules/
 coverage/
 build/
 __mocks__
+src/Toast.js

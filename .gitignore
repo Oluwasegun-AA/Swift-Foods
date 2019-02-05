@@ -1,4 +1,3 @@
-node_modules/
 build/
 .vscode/
 src/tests/components/__snapshots__/
@@ -8,3 +7,4 @@ bootstrap/
 coverage/
 yarn.lock
 .env
+node_modules/

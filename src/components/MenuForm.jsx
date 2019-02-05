@@ -310,6 +310,20 @@ const MenuForm = ({ onClick }) => (
               />
             </span>
           </div>
+          <div id="item" className="item">
+            <span className="description">Buger</span>
+            <span className="description">#1500 </span>
+            <img src={a} className="itemLogo" />
+            <span className="addToCartBtnDiv">
+              <Button
+                type="button"
+                id="addToCartBtn"
+                className="addToCartBtn"
+                onClick={onClick}
+                value="Add to Cart"
+              />
+            </span>
+          </div>
         </div>
       </div>
     </div>

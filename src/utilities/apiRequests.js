@@ -6,9 +6,7 @@
 
 import axios from 'axios';
 
-const baseUrl = (process.env.NODE_ENV === 'production')
-  ? 'https://swift-foods-backend.herokuapp.com/api/v1'
-  : process.env.PRODUCTION_URL;
+const baseUrl = 'https://swift-foods-backend.herokuapp.com/api/v1';
 
 const request = axios.create({
   baseURL: baseUrl,

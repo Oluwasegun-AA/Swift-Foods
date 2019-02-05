@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { addFlashMessage, clearFlashMessages } from '../actions/flashActions';
-import { loginRequest } from '../actions/loginActions';
+import { loginRequest, auth } from '../actions/loginActions';
 import { Login, Footer } from '../components';
-import loginValidation from '../utilities/loginValidation';
-import Spinner from '../components/Spinner';
 import NavBar from './Navbar';
+import toastMessage from '../utilities/toastMessage';
 
 /**
  *  Input sign in body form component
@@ -15,13 +13,15 @@ export class LoginPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
+      username: '',
       password: '',
-      errors: {},
-      isLoading: false
     };
-    this.onBlurError = {};
-    this.onInputError = {};
+    this.letterRef = React.createRef();
+    this.capitalRef = React.createRef();
+    this.numberRef = React.createRef();
+    this.lengthRef = React.createRef();
+    this.errorRef = React.createRef();
+    this.passwordRef = React.createRef();
   }
 
   handleOnChange = (e) => {
@@ -30,97 +30,106 @@ export class LoginPage extends Component {
     });
   }
 
-  handleOnInput = (e) => {
-    const field = e.target.name;
-    const { value } = e.target;
-    this.setState({ [field]: value }, () => {
-      const errors = loginValidation(this.state);
-      if (errors[field]) {
-        this.onInputError[field] = errors[field];
-        this.setState({ errors: this.onInputError[field] });
-      } else {
-        delete (this.onInputError[field]);
-      }
-      this.setState({ errors: this.onInputError });
-    });
-  }
-
-  handleOnBlur = (e) => {
-    const field = e.target.name;
-    const errors = loginValidation(this.state);
-    if (errors[field]) {
-      this.onBlurError[field] = errors[field];
-      this.setState({ errors: this.onBlurError[field] });
-    } else {
-      delete (this.onBlurError[field]);
-    }
-    this.setState({ errors: this.onBlurError });
-  }
-
   handleOnSubmit = async (e) => {
     e.preventDefault();
-    const {
-      addBannerMessage,
-      clearBannerMessages,
-      userLogin,
-      history
-    } = this.props;
-    clearBannerMessages();
-    if (this.isValid()) {
-      this.setState({ errors: {}, isLoading: true });
-      const loginResponse = await userLogin(this.state);
-      if (loginResponse) {
-        this.setState({ isLoading: false });
-        if (loginResponse.status === 200) {
-          history.push('/');
-        } else if (
-          loginResponse.data.message === 'Email or password does not exist'
-        ) {
-          addBannerMessage({
-            type: 'error',
-            text: 'Incorrect email or password'
-          });
-        } else {
-          addBannerMessage({
-            type: 'warning',
-            text: `${loginResponse.data.message}`
-          });
-        }
+    const { history, userLogin } = this.props;
+    const response = await userLogin(this.state);
+    console.log('22222', response);
+    if (response) {
+      if (response.success === true) {
+        toastMessage({
+          type: 'success',
+          message: 'Login Successful'
+        });
+        history.push('/');
+      } else if (response.success === false) {
+        toastMessage({
+          type: 'danger',
+          message: 'Incorrect email or password. Please try again'
+        });
+      } else {
+        toastMessage({
+          type: 'danger',
+          message: 'Incorrect email or password. Please try again'
+        });
       }
     }
   }
 
-  isValid() {
-    const errors = loginValidation(this.state);
-    if (Object.keys(errors).length > 0) {
-      this.setState({ errors });
-      return false;
+  handleOnBlur = () => {
+    this.errorRef.current.style.display = 'none';
+  }
+
+  handleOnFocus = () => {
+    this.errorRef.current.style.display = 'block';
+  }
+
+  viewPassword = () => {
+    if (this.passwordRef.current.type === 'password') {
+      this.passwordRef.current.type = 'text';
+    } else {
+      this.passwordRef.current.type = 'password';
     }
-    return true;
+  }
+
+  handleOnKeyUp = (e) => {
+    let count = 0;
+    const { value } = e.target;
+
+    // Validate lowercase letters
+    const lowerCase = /[a-z]/g;
+    this.validate(value, this.letterRef.current, lowerCase, count += 1);
+
+    // Validate capital letters
+    const upperCase = /[A-Z]/g;
+    this.validate(value, this.capitalRef.current, upperCase, count += 1);
+
+    // Validate numbers
+    const numbers = /[0-9]/g;
+    this.validate(value, this.numberRef.current, numbers, count += 1);
+
+    // Validate length
+    if (value.length >= 8) {
+      this.lengthRef.current.classList.remove('invalid');
+      this.lengthRef.current.classList.add('valid');
+      count += 1;
+    } else {
+      this.lengthRef.current.classList.remove('valid');
+      this.lengthRef.current.classList.add('invalid');
+    }
+    if (count === 4) {
+      this.errorRef.current.style.display = 'none';
+    }
+  }
+
+  validate = (value, attribute, check) => {
+    if (value.match(check)) {
+      attribute.classList.remove('invalid');
+      attribute.classList.add('valid');
+    } else {
+      attribute.classList.remove('valid');
+      attribute.classList.add('invalid');
+    }
   }
 
   render() {
-    const {
-      errors, isLoading, email, password
-    } = this.state;
     return (
       <span>
         <NavBar />
         <div>
           <Login
-            onInput={this.handleOnInput}
+            loginHandler={this.handleOnSubmit}
             onChange={this.handleOnChange}
+            onKeyUp={this.handleOnKeyUp}
+            letterRef={this.letterRef}
+            capitalRef={this.capitalRef}
+            numberRef={this.numberRef}
+            passwordRef={this.passwordRef}
+            lengthRef={this.lengthRef}
+            errorRef={this.errorRef}
             onBlur={this.handleOnBlur}
-            submitDetails={this.handleOnSubmit}
-            errors={errors}
-            isRequestSent={isLoading}
-            email={email}
-            password={password}
-          />
-          <Spinner
-            customSpinnerClass={
-            (this.state.isLoading === false) ? 'hide' : ''
-          }
+            onFocus={this.handleOnFocus}
+            passwordToggle={this.viewPassword}
           />
         </div>
         <Footer />
@@ -131,19 +140,15 @@ export class LoginPage extends Component {
 
 LoginPage.propTypes = {
   userLogin: PropTypes.func.isRequired,
-  addBannerMessage: PropTypes.func.isRequired,
-  clearBannerMessages: PropTypes.func,
-  history: PropTypes.func
-};
-
-LoginPage.defaultProps = {
-  clearBannerMessages: () => null
+  history: PropTypes.objectOf(PropTypes.oneOfType([
+    PropTypes.object, PropTypes.func, PropTypes.string,
+    PropTypes.number
+  ])),
 };
 
 const mapDispatchToProps = {
   userLogin: loginRequest,
-  addBannerMessage: addFlashMessage,
-  clearBannerMessages: clearFlashMessages
+  Auth: auth
 };
 
 export default connect(null, mapDispatchToProps)(LoginPage);

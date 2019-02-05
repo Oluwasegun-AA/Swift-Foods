@@ -7,9 +7,18 @@ import FormInput from './FormInput';
 import Button from './Button';
 
 const Login = ({
-  username,
-  password,
-  login
+  onChange,
+  loginHandler,
+  letterRef,
+  capitalRef,
+  numberRef,
+  lengthRef,
+  errorRef,
+  onKeyUp,
+  onBlur,
+  onFocus,
+  passwordToggle,
+  passwordRef
 }) => (
   <div className="gridContainer">
     <div className="gridTop" />
@@ -25,17 +34,24 @@ const Login = ({
             <FormInput
               type="text"
               id="username"
+              name="username"
               className="username"
               placeHolder="Enter Username"
-              onchange={username}
+              onChange={onChange}
+              onKeyUp={onKeyUp}
             />
             <span><b>Password</b></span>
             <FormInput
               type="password"
               id="password"
+              name="password"
               className="password"
               placeHolder="Enter Password"
-              onchange={password}
+              onChange={onChange}
+              onKeyUp={onKeyUp}
+              onBlur={onBlur}
+              onFocus={onFocus}
+              Ref={passwordRef}
             />
             <span className="showPassword">
               <input
@@ -43,39 +59,40 @@ const Login = ({
                 id="showPassword"
                 className="showPassword"
                 name="remember"
+                onClick={passwordToggle}
               />
               <span>Show Password</span>
             </span>
-            <div className="signupButtonDiv">
-              <Button className="loginBtn" value="Login" onClick={login} />
+            <div className="loginButtonDiv">
+              <Button className="loginBtn" value="Login" onClick={loginHandler} />
             </div>
             <div className="errorMessageContainer">
               <span id="notMember">
                 <span>Not a member?   </span>
                 <Link to="/signup"> Signup</Link>
               </span>
-              <div id="errorMessage" className="errorMessage">
-                <span className="notMember">Password must contain :</span>
-                <h3 id="letter" className="invalid">
+              <div id="errorMessage" ref={errorRef} className="errorMessage">
+                <span className="erroMessageTitle">Password must contain :</span>
+                <h3 id="letter" ref={letterRef} className="invalid">
                   A
                   {' '}
                   <b>Lowercase</b>
                   {' '}
                   letter
                 </h3>
-                <h3 id="capital" className="invalid">
+                <h3 id="capital" ref={capitalRef} className="invalid">
                   A
                   {' '}
                   <b>Capital (uppercase)</b>
                   {' '}
                   letter
                 </h3>
-                <h3 id="number" className="invalid">
+                <h3 id="number" ref={numberRef} className="invalid">
                   A
                   {' '}
                   <b>Number</b>
                 </h3>
-                <h3 id="length" className="invalid">
+                <h3 id="length" ref={lengthRef} className="invalid">
                   At least
                   <b> 8 characters</b>
                 </h3>
@@ -91,9 +108,18 @@ const Login = ({
 );
 
 Login.propTypes = {
-  username: PropTypes.func.isRequired,
-  password: PropTypes.func.isRequired,
-  login: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  loginHandler: PropTypes.func.isRequired,
+  letterRef: PropTypes.objectOf(PropTypes.any).isRequired,
+  capitalRef: PropTypes.objectOf(PropTypes.any).isRequired,
+  numberRef: PropTypes.objectOf(PropTypes.any).isRequired,
+  lengthRef: PropTypes.objectOf(PropTypes.any).isRequired,
+  passwordRef: PropTypes.objectOf(PropTypes.any).isRequired,
+  errorRef: PropTypes.objectOf(PropTypes.any).isRequired,
+  onKeyUp: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
+  onFocus: PropTypes.func.isRequired,
+  passwordToggle: PropTypes.func.isRequired
 };
 
 export default Login;

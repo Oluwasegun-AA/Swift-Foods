@@ -55,7 +55,7 @@ const mapStateToProps = state => ({
 });
 
 Navbar.propTypes = {
-  currentUser: PropTypes.objectOf(PropTypes.string).isRequired,
+  currentUser: PropTypes.objectOf(PropTypes.any).isRequired,
   signOut: PropTypes.func.isRequired,
   children: PropTypes.objectOf(PropTypes.string)
 };

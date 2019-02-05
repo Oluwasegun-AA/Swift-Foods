@@ -1,36 +1,66 @@
-
-import axios from 'axios';
-import jwt from 'jsonwebtoken';
+/* eslint-disable camelcase */
 import { SET_CURRENT_USER } from '../actionTypes';
 import setAuthorizationToken from '../utilities/setAuthorizationToken';
+import { Post } from '../utilities/apiRequests';
+import toastMessage from '../utilities/toastMessage';
 
 export const setCurrentUser = userInfo => ({
   type: SET_CURRENT_USER,
   userInfo
 });
 
-export const loginRequest = (userData) => {
-  const sentData = {
-    email: userData.email,
-    password: userData.password
+export const loginRequest = data => async (dispatch) => {
+  let response;
+  const payload = {
+    user_name: data.username,
+    user_password: data.password
   };
-  return async (dispatch) => {
-    let loginResponse;
-    try {
-      loginResponse = await axios({
-        method: 'post',
-        url:
-        'https://swift-foods-backend.herokuapp.com/api/v1',
-        data: sentData
-      });
-      const { token } = loginResponse.data.userDetails;
-      const decodedToken = jwt.decode(token);
-      localStorage.setItem('token', token);
+  try {
+    response = await Post('/auth/login', payload);
+    if (response.success === true) {
+      const { token, user } = response;
       setAuthorizationToken(token);
-      dispatch(setCurrentUser(decodedToken));
-      return loginResponse;
-    } catch (error) {
-      return error.response;
+      dispatch(setCurrentUser(user));
     }
-  };
+    return response;
+  } catch (error) {
+    return error.response;
+  }
+};
+
+export const auth = async (dispatch) => {
+  try {
+    const data = await Post('/auth');
+    const {
+      success,
+      token,
+      user
+    } = data;
+    if (success === false) {
+      toastMessage({
+        type: 'danger',
+        message: 'Session expired, Please Login',
+        routeMessage: 'click here to login',
+        route: '/login'
+      });
+      return false;
+    } if (success === true) {
+      setAuthorizationToken(token);
+      dispatch(setCurrentUser(data));
+    }
+    if (user.user_role === 'User') {
+      return 'User';
+    }
+    return 'Admin';
+  } catch (err) {
+    if (err) {
+      toastMessage({
+        type: 'success',
+        message: 'Welcome to Swift Foods',
+        routeMessage: 'click here to login',
+        route: '/login'
+      });
+      return 'Failed';
+    }
+  }
 };

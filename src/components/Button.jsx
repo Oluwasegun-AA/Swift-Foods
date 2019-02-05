@@ -5,11 +5,11 @@ const Button = ({
   onClick,
   isRequestSent,
   value,
-  ClassName
+  className
 }) => (
   <button
     type="button"
-    className={`button ${ClassName}`}
+    className={`button ${className}`}
     onClick={onClick}
     disabled={isRequestSent}
   >
@@ -21,7 +21,7 @@ Button.propTypes = {
   onClick: PropTypes.func,
   isRequestSent: PropTypes.bool,
   value: PropTypes.string.isRequired,
-  ClassName: PropTypes.string.isRequired,
+  className: PropTypes.string.isRequired,
 };
 
 Button.defaultProps = {
