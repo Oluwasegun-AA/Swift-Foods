@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { SignupForm, Footer } from '../components';
-import signupValidation from '../utilities/signupValidation';
 import { addFlashMessage, clearFlashMessages } from '../actions/flashActions';
 import { signupUser } from '../actions/signupActions';
 import NavBar from './Navbar';
@@ -33,7 +32,6 @@ class SignupPage extends Component {
     const field = e.target.name;
     const { value } = e.target;
     this.setState({ [field]: value }, () => {
-      const errors = signupValidation(this.state);
       if (errors[field]) {
         this.onInputError[field] = errors[field];
         this.setState({ errors: this.onInputError[field] });
@@ -46,7 +44,6 @@ class SignupPage extends Component {
 
   handleOnBlur = (e) => {
     const field = e.target.name;
-    const errors = signupValidation(this.state);
     if (errors[field]) {
       this.onBlurError[field] = errors[field];
       this.setState({ errors: this.onBlurError[field] });

@@ -11,11 +11,15 @@ class MenuPage extends Component {
     this.state = {};
   }
 
+  onClickHandler = () => ('')
+
   render() {
     return (
       <span>
         <NavBar />
-        <MenuForm />
+        <MenuForm
+          onClick={this.onClickHandler}
+        />
         <Footer />
       </span>
     );
