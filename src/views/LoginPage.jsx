@@ -34,7 +34,6 @@ export class LoginPage extends Component {
     e.preventDefault();
     const { history, userLogin } = this.props;
     const response = await userLogin(this.state);
-    console.log('22222', response);
     if (response) {
       if (response.success === true) {
         toastMessage({

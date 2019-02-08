@@ -6,24 +6,10 @@ const toastMessage = ({
   routeMessage,
   route
 }) => {
-  if ((type === 'success') && message && routeMessage && route) {
+  if (type && message && routeMessage && route) {
     return new Toast({
       message: `${message}`,
-      type: 'success',
-      customButtons: [
-        {
-          text: `${routeMessage}`,
-          onClick() {
-            window.location.href = `${route}`;
-          }
-        }
-      ]
-    });
-  }
-  if ((type === 'danger') && message && routeMessage && route) {
-    return new Toast({
-      message: `${message}`,
-      type: 'danger',
+      type: `${type}`,
       customButtons: [
         {
           text: `${routeMessage}`,
