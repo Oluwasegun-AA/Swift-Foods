@@ -39,7 +39,7 @@ export const auth = async (dispatch) => {
     if (success === false) {
       toastMessage({
         type: 'danger',
-        message: 'Session expired, Please Login',
+        message: 'Welcome to Swift Foods',
         routeMessage: 'click here to login',
         route: '/login'
       });
