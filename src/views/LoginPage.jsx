@@ -15,6 +15,7 @@ export class LoginPage extends Component {
     this.state = {
       username: '',
       password: '',
+      count: 0
     };
     this.letterRef = React.createRef();
     this.capitalRef = React.createRef();
@@ -32,6 +33,7 @@ export class LoginPage extends Component {
 
   handleOnSubmit = async (e) => {
     e.preventDefault();
+    // if (this.state.count === 4) {
     const { history, userLogin } = this.props;
     const response = await userLogin(this.state);
     if (response) {
@@ -53,21 +55,20 @@ export class LoginPage extends Component {
         });
       }
     }
+    // }
+    // return toastMessage({
+    //   type: 'danger',
+    //   message: 'Invalid Username or Password',
+    // });
   }
 
-  handleOnBlur = () => {
-    this.errorRef.current.style.display = 'none';
-  }
-
-  handleOnFocus = () => {
-    this.errorRef.current.style.display = 'block';
-  }
-
-  viewPassword = () => {
-    if (this.passwordRef.current.type === 'password') {
-      this.passwordRef.current.type = 'text';
+  validate = (value, attribute, check) => {
+    if (value.match(check)) {
+      attribute.classList.remove('invalid');
+      attribute.classList.add('valid');
     } else {
-      this.passwordRef.current.type = 'password';
+      attribute.classList.remove('valid');
+      attribute.classList.add('invalid');
     }
   }
 
@@ -97,44 +98,51 @@ export class LoginPage extends Component {
       this.lengthRef.current.classList.add('invalid');
     }
     if (count === 4) {
+      this.setState({ count: '4' });
       this.errorRef.current.style.display = 'none';
     }
   }
 
-  validate = (value, attribute, check) => {
-    if (value.match(check)) {
-      attribute.classList.remove('invalid');
-      attribute.classList.add('valid');
-    } else {
-      attribute.classList.remove('valid');
-      attribute.classList.add('invalid');
-    }
-  }
+handleOnBlur = () => {
+  this.errorRef.current.style.display = 'none';
+}
 
-  render() {
-    return (
-      <span>
-        <NavBar />
-        <div>
-          <Login
-            loginHandler={this.handleOnSubmit}
-            onChange={this.handleOnChange}
-            onKeyUp={this.handleOnKeyUp}
-            letterRef={this.letterRef}
-            capitalRef={this.capitalRef}
-            numberRef={this.numberRef}
-            passwordRef={this.passwordRef}
-            lengthRef={this.lengthRef}
-            errorRef={this.errorRef}
-            onBlur={this.handleOnBlur}
-            onFocus={this.handleOnFocus}
-            passwordToggle={this.viewPassword}
-          />
-        </div>
-        <Footer />
-      </span>
-    );
+handleOnFocus = () => {
+  this.errorRef.current.style.display = 'block';
+}
+
+viewPassword = () => {
+  if (this.passwordRef.current.type === 'password') {
+    this.passwordRef.current.type = 'text';
+  } else {
+    this.passwordRef.current.type = 'password';
   }
+}
+
+render() {
+  return (
+    <span>
+      <NavBar />
+      <div>
+        <Login
+          loginHandler={this.handleOnSubmit}
+          onChange={this.handleOnChange}
+          onKeyUp={this.handleOnKeyUp}
+          letterRef={this.letterRef}
+          capitalRef={this.capitalRef}
+          numberRef={this.numberRef}
+          passwordRef={this.passwordRef}
+          lengthRef={this.lengthRef}
+          errorRef={this.errorRef}
+          onBlur={this.handleOnBlur}
+          onFocus={this.handleOnFocus}
+          passwordToggle={this.viewPassword}
+        />
+      </div>
+      <Footer />
+    </span>
+  );
+}
 }
 
 LoginPage.propTypes = {

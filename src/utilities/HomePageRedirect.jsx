@@ -10,11 +10,11 @@ export default function (ComposedComponent) {
     componentWillMount = async () => {
       const {
         history,
-        token,
+        isAuthenticated,
         Auth
       } = this.props;
       if (localStorage.getItem('token')) {
-        if (!token) {
+        if (!isAuthenticated) {
           const response = await Auth();
           if (response === 'User') {
             toastMessage({
@@ -25,8 +25,8 @@ export default function (ComposedComponent) {
             });
             return history.push();
           }
-          return history.push();
         }
+        return history.push();
       }
       return history.push('/');
     }
@@ -44,13 +44,11 @@ export default function (ComposedComponent) {
   };
 
   const mapStateToProps = state => ({
-    isAuthenticated: state.currentUser.isAuthenticated,
-    token: state.currentUser.tokenExist
+    isAuthenticated: state.currentUser.isAuthenticated
   });
 
   HomePageRedirect.propTypes = {
     isAuthenticated: PropTypes.bool.isRequired,
-    token: PropTypes.bool.isRequired,
     Auth: PropTypes.func.isRequired,
     history: PropTypes.objectOf(PropTypes.oneOfType([
       PropTypes.object, PropTypes.func, PropTypes.string,

@@ -1,4 +1,4 @@
-import { SET_CURRENT_USER } from '../actionTypes';
+import { SET_CURRENT_USER, SIGN_UP_SUCCESS } from '../actionTypes';
 
 const initialState = {
   isAuthenticated: false,
@@ -14,6 +14,12 @@ const authReducer = (state = initialState, action = {}) => {
         && Object.keys(action.userInfo).length > 0,
         userInfo: action.userInfo,
         tokenExist: true
+      };
+    case SIGN_UP_SUCCESS:
+      return {
+        isAuthenticated: false,
+        userInfo: action.userInfo,
+        tokenExist: false
       };
     default: return state;
   }

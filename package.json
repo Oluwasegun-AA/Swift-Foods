@@ -11,9 +11,9 @@
     "start:heroku": "node build/server.js",
     "heroku-postbuild": "npm run build && npm run build:server",
     "build:server": "babel server.js -d build",
-    "start": "webpack-dev-server --mode development --hot --open",
-    "start:dev": "webpack-dev-server --mode development --hot --open",
-    "build": "webpack --mode development",
+    "start": "webpack-dev-server --mode development --hot",
+    "start:dev": "webpack-dev-server --mode development --hot ",
+    "build": " rimraf build && webpack --mode development",
     "test": "jest  --detectOpenHandles -u --coverage",
     "test:watch": "jest --watch --coverage",
     "stylelint": "stylelint 'src/styles/**/*.scss'"
@@ -46,6 +46,7 @@
     "babel-plugin-transform-class-properties": "6.24.1",
     "bootstrap": "4.2.1",
     "chai": "4.2.0",
+    "cors": "2.8.5",
     "css-loader": "2.1.0",
     "dotenv": "6.2.0",
     "enzyme": "3.8.0",
@@ -67,8 +68,8 @@
     "reactstrap": "7.0.2",
     "redux": "4.0.1",
     "redux-thunk": "2.3.0",
+    "rimraf": "2.6.3",
     "style-loader": "0.23.1",
-    "toastr": "2.1.4",
     "yamljs": "0.3.0"
   },
   "devDependencies": {
