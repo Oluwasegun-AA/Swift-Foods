@@ -75,7 +75,7 @@ comparePassword = () => {
   } else {
     this.comparePasswordRef.current.innerHTML = 'Password not Matching';
     this.comparePasswordRef.current.style.display = 'block';
-    this.comparePasswordRef.current.style.display = 'red';
+    this.comparePasswordRef.current.style.color = 'red';
   }
 }
 
@@ -138,7 +138,6 @@ viewPassword = () => {
     this.confirmPasswordRef.current.type = 'password';
   }
 }
-
 
 render() {
   return (
