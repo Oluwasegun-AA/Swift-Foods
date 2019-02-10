@@ -10,7 +10,9 @@ const baseUrl = 'https://swift-foods-backend.herokuapp.com/api/v1';
 
 const request = axios.create({
   baseURL: baseUrl,
+  mode: 'cors',
   headers: {
+    'Access-Control-Allow-Origin': '*',
     'Content-Type': 'application/json',
     'x-access-token': window.localStorage.getItem('token')
   },
