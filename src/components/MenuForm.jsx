@@ -22,15 +22,15 @@ import {
 } from '../styles/images';
 import Button from './Button';
 
-const MenuForm = ({ onClick }) => (
+const MenuForm = ({ onClick, itemsListRef, menu }) => (
   <div className="gridContainer">
     <div className="gridTop" />
     <div className="gridRight" />
     <div className="gridMiddle">
       <div className="menuItems">
 
-        <div className="itemsList">
-          <div id="item" className="item">
+        <div className="itemsList" ref={itemsListRef}>
+          <div id="item" key="a" className="item">
             <span className="description">Buger</span>
             <span className="description">#1500 </span>
             <img src={a} className="itemLogo" />
@@ -44,7 +44,7 @@ const MenuForm = ({ onClick }) => (
               />
             </span>
           </div>
-          <div id="item" className="item">
+          <div id="item" key="b" className="item">
             <span className="description">Chips</span>
             <span className="description">#200 </span>
             <img src={b} className="itemLogo" />
@@ -58,7 +58,7 @@ const MenuForm = ({ onClick }) => (
               />
             </span>
           </div>
-          <div id="item" className="item">
+          <div id="item" key="c" className="item">
             <span className="description">Full Pizza</span>
             <span className="description">#3000 </span>
             <img src={c} className="itemLogo" />
@@ -72,7 +72,7 @@ const MenuForm = ({ onClick }) => (
               />
             </span>
           </div>
-          <div id="item" className="item">
+          <div id="item" key="d" className="item">
             <span className="description">Buger</span>
             <span className="description">#1000 </span>
             <img src={d} className="itemLogo" />
@@ -86,7 +86,7 @@ const MenuForm = ({ onClick }) => (
               />
             </span>
           </div>
-          <div id="item" className="item">
+          <div id="item" key="e" className="item">
             <span className="description">ham Buger</span>
             <span className="description">#1500 </span>
             <img src={e} className="itemLogo" />
@@ -100,7 +100,7 @@ const MenuForm = ({ onClick }) => (
               />
             </span>
           </div>
-          <div id="item" className="item">
+          <div id="item" key="f" className="item">
             <span className="description">Roman Chips</span>
             <span className="description">#2000 </span>
             <img src={f} className="itemLogo" />
@@ -114,7 +114,7 @@ const MenuForm = ({ onClick }) => (
               />
             </span>
           </div>
-          <div id="item" className="item">
+          <div id="item" key="g" className="item">
             <span className="description">cane chips</span>
             <span className="description">#200 </span>
             <img src={g} className="itemLogo" />
@@ -128,7 +128,7 @@ const MenuForm = ({ onClick }) => (
               />
             </span>
           </div>
-          <div id="item" className="item">
+          <div id="item" key="h" className="item">
             <span className="description">Roasted Chicken</span>
             <span className="description">#1300 </span>
             <img src={h} className="itemLogo" />
@@ -142,7 +142,7 @@ const MenuForm = ({ onClick }) => (
               />
             </span>
           </div>
-          <div id="item" className="item">
+          <div id="item" key="i" className="item">
             <span className="description">Chicken Laps</span>
             <span className="description">#500 </span>
             <img src={i} className="itemLogo" />
@@ -156,7 +156,7 @@ const MenuForm = ({ onClick }) => (
               />
             </span>
           </div>
-          <div id="item" className="item">
+          <div id="item" key="j" className="item">
             <span className="description">Fried Rice</span>
             <span className="description">#2000 </span>
             <img src={j} className="itemLogo" />
@@ -170,7 +170,7 @@ const MenuForm = ({ onClick }) => (
               />
             </span>
           </div>
-          <div id="item" className="item">
+          <div id="item" key="k" className="item">
             <span className="description">scored chips</span>
             <span className="description">#900 </span>
             <img src={b} className="itemLogo" />
@@ -184,7 +184,7 @@ const MenuForm = ({ onClick }) => (
               />
             </span>
           </div>
-          <div id="item" className="item">
+          <div id="item" key="l" className="item">
             <span className="description">Cheese</span>
             <span className="description">#700 </span>
             <img src={l} className="itemLogo" />
@@ -198,7 +198,7 @@ const MenuForm = ({ onClick }) => (
               />
             </span>
           </div>
-          <div id="item" className="item">
+          <div id="item" key="m" className="item">
             <span className="description">grilled Chicken</span>
             <span className="description">#1000 </span>
             <img src={m} className="itemLogo" />
@@ -212,7 +212,7 @@ const MenuForm = ({ onClick }) => (
               />
             </span>
           </div>
-          <div id="item" className="item">
+          <div id="item" key="n" className="item">
             <span className="description">Chinese Rice</span>
             <span className="description">#1500 </span>
             <img src={n} className="itemLogo" />
@@ -226,7 +226,7 @@ const MenuForm = ({ onClick }) => (
               />
             </span>
           </div>
-          <div id="item" className="item">
+          <div id="item" key="o" className="item">
             <span className="description">Tilapia Buger</span>
             <span className="description">#400 </span>
             <img src={o} className="itemLogo" />
@@ -240,7 +240,7 @@ const MenuForm = ({ onClick }) => (
               />
             </span>
           </div>
-          <div id="item" className="item">
+          <div id="item" key="p" className="item">
             <span className="description">Nigerian Jollof</span>
             <span className="description">#2000 </span>
             <img src={p} className="itemLogo" />
@@ -254,7 +254,7 @@ const MenuForm = ({ onClick }) => (
               />
             </span>
           </div>
-          <div id="item" className="item">
+          <div id="item" key="q" className="item">
             <span className="description">Roman Buger</span>
             <span className="description">#600 </span>
             <img src={a} className="itemLogo" />
@@ -268,7 +268,7 @@ const MenuForm = ({ onClick }) => (
               />
             </span>
           </div>
-          <div id="item" className="item">
+          <div id="item" key="r" className="item">
             <span className="description">Italian Buger</span>
             <span className="description">#300 </span>
             <img src={r} className="itemLogo" />
@@ -282,7 +282,7 @@ const MenuForm = ({ onClick }) => (
               />
             </span>
           </div>
-          <div id="item" className="item">
+          <div id="item" key="s" className="item">
             <span className="description">Small Chops</span>
             <span className="description">#900 </span>
             <img src={s} className="itemLogo" />
@@ -296,7 +296,7 @@ const MenuForm = ({ onClick }) => (
               />
             </span>
           </div>
-          <div id="item" className="item">
+          <div id="item" key="t" className="item">
             <span className="description">Helm Pizza</span>
             <span className="description">#200 </span>
             <img src={u} className="itemLogo" />
@@ -310,7 +310,7 @@ const MenuForm = ({ onClick }) => (
               />
             </span>
           </div>
-          <div id="item" className="item">
+          <div id="item" key="u" className="item">
             <span className="description">Buger</span>
             <span className="description">#1500 </span>
             <img src={a} className="itemLogo" />
@@ -324,6 +324,7 @@ const MenuForm = ({ onClick }) => (
               />
             </span>
           </div>
+          {menu}
         </div>
       </div>
     </div>
@@ -334,7 +335,12 @@ const MenuForm = ({ onClick }) => (
 );
 
 MenuForm.propTypes = {
-  onClick: PropTypes.func.isRequired
+  onClick: PropTypes.func.isRequired,
+  itemsListRef: PropTypes.objectOf(PropTypes.oneOfType([
+    PropTypes.object, PropTypes.func, PropTypes.string,
+    PropTypes.number
+  ])),
+  menu: PropTypes.any
 };
 
 export default MenuForm;

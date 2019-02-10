@@ -9,6 +9,7 @@ import ErrorPage from './ErrorPage';
 import Login from './Login';
 import SignupForm from './SignupForm';
 import MenuForm from './MenuForm';
+import ItemForm from './ItemForm';
 
 export {
   Button,
@@ -21,5 +22,6 @@ export {
   NavBarAuth,
   ErrorPage,
   Login,
-  MenuForm
+  MenuForm,
+  ItemForm
 };

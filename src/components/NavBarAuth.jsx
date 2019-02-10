@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { logo, cart, avarter } from '../styles/images';
 
-const NavBarAuth = ({ signOut }) => (
+const NavBarAuth = ({ signOut, cartWeight }) => (
   <nav className="navBar">
     <div className="headerContent">
       <span className="logo">
@@ -41,7 +41,7 @@ const NavBarAuth = ({ signOut }) => (
           <span className="cartName">cart</span>
           <div className="cartImageAndWeight">
             <img src={cart} className="cartImage" />
-            <span className="cartWeight">0</span>
+            <span className="cartWeight">{cartWeight}</span>
           </div>
         </Link>
         <Link id="menu" className="menu" to="/menu"><span>Menu</span></Link>
@@ -51,7 +51,8 @@ const NavBarAuth = ({ signOut }) => (
 );
 
 NavBarAuth.propTypes = {
-  signOut: PropTypes.func.isRequired
+  signOut: PropTypes.func.isRequired,
+  cartWeight: PropTypes.number.isRequired
 };
 
 export default NavBarAuth;

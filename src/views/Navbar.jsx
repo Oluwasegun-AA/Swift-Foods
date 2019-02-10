@@ -33,6 +33,7 @@ class Navbar extends Component {
       return (
         <NavBarAuth
           signOut={signOut}
+          cartWeight={this.props.cartWeight}
         />
       );
     }
@@ -51,12 +52,14 @@ class Navbar extends Component {
 }
 
 const mapStateToProps = state => ({
-  currentUser: state.currentUser
+  currentUser: state.currentUser,
+  cartWeight: state.menu.cartWeight
 });
 
 Navbar.propTypes = {
   currentUser: PropTypes.objectOf(PropTypes.any).isRequired,
   signOut: PropTypes.func.isRequired,
+  cartWeight: PropTypes.number.isRequired,
   children: PropTypes.objectOf(PropTypes.string)
 };
 
