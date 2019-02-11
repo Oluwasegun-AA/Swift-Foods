@@ -8,15 +8,34 @@ import {
   CartElement
 } from '../components';
 import NavBar from './Navbar';
+import toastMessage from '../utilities/toastMessage';
+import { resetCart } from '../actions/menuActions';
 
 class CartPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
     };
+    this.addressRef = React.createRef();
   }
 
-  handleClick = () => {
+  handleOnClick = () => {
+    const { history, resetCart } = this.props;
+    const address = this.addressRef.current.value;
+    if (address.length > 4) {
+      localStorage.removeItem('cart');
+      resetCart();
+      toastMessage({
+        type: 'Success',
+        message: `Orders Placed Successfully to "${address}"`,
+        routeMessage: 'click here to return home',
+        route: '/'
+      });
+      history.push();
+    } return toastMessage({
+      type: 'danger',
+      message: 'Please enter a valid home address',
+    });
   }
 
   handleOnChange = () => {
@@ -29,6 +48,8 @@ class CartPage extends Component {
       return (
         <CartForm
           CartElement={element}
+          addressRef={this.addressRef}
+          onClick={this.handleOnClick}
         />
       );
     }
@@ -64,10 +85,19 @@ class CartPage extends Component {
 
 CartPage.propTypes = {
   cartWeight: PropTypes.number.isRequired,
+  resetCart: PropTypes.func.isRequired,
+  history: PropTypes.objectOf(PropTypes.oneOfType([
+    PropTypes.object, PropTypes.func, PropTypes.string,
+    PropTypes.number
+  ])),
 };
 
 const mapStateToProps = state => ({
   cartWeight: state.menu.cartWeight
 });
 
-export default connect(mapStateToProps, null)(CartPage);
+const mapDispatchToProps = {
+  resetCart
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartPage);

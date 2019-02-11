@@ -1,11 +1,14 @@
 /* eslint-disable camelcase */
-import { ADD_TO_CART } from '../actionTypes';
+import { ADD_TO_CART, CLEAR_CART } from '../actionTypes';
 import { Get } from '../utilities/apiRequests';
 import storage from '../utilities/storage';
 
 export const addToCart = data => ({
   type: ADD_TO_CART,
   data
+});
+export const clearCart = () => ({
+  type: CLEAR_CART
 });
 
 export const fetchMenu = async () => {
@@ -31,4 +34,8 @@ export const selectMenu = data => (dispatch) => {
   } catch (error) {
     return error;
   }
+};
+
+export const resetCart = () => (dispatch) => {
+  dispatch(clearCart());
 };

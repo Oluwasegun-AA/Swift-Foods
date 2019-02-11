@@ -1,4 +1,4 @@
-import { ADD_TO_CART } from '../actionTypes';
+import { ADD_TO_CART, CLEAR_CART } from '../actionTypes';
 
 const initialState = {
   cartWeight: 0,
@@ -12,6 +12,11 @@ const menuReducer = (state = initialState, action = {}) => {
       return {
         cartWeight: state.cartWeight + 1,
         cartInfo: data
+      };
+    case CLEAR_CART:
+      return {
+        cartWeight: 0,
+        cartInfo: ''
       };
     default: return state;
   }
