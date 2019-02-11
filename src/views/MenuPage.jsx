@@ -20,6 +20,7 @@ class MenuPage extends Component {
   handleClick = (e) => {
     const { selectMenu } = this.props;
     const item = e.currentTarget.parentElement.parentElement;
+    const itemName = e.currentTarget.parentElement.parentElement.children[0].innerHTML;
     const data = [{
       name: item.children[0].innerHTML,
       price: item.children[1].innerHTML,
@@ -29,7 +30,7 @@ class MenuPage extends Component {
     if (addToCart.success === true) {
       return toastMessage({
         type: 'success',
-        message: `${addToCart.data.name} added to cart`
+        message: `${itemName} added to cart`
       });
     }
   }
