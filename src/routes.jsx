@@ -11,7 +11,8 @@ import {
   ErrorPage,
   LoginPage,
   SignupPage,
-  MenuPage
+  MenuPage,
+  CartPage
 } from './views';
 
 const routes = (
@@ -22,6 +23,7 @@ const routes = (
       <Route exact path="/login" component={LoginPage} />
       <Route exact path="/signup" component={SignupPage} />
       <Route exact path="/menu" component={HomePageRedirect(MenuPage)} />
+      <Route exact path="/cart" component={HomePageRedirect(CartPage)} />
       <Route component={ErrorPage} />
     </Switch>
   </BrowserRouter>

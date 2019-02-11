@@ -5,7 +5,8 @@ import {
   Footer, MenuForm, ItemForm
 } from '../components';
 import NavBar from './Navbar';
-import { fetchMenu } from '../actions/menuActions';
+import { fetchMenu, selectMenu } from '../actions/menuActions';
+import toastMessage from '../utilities/toastMessage';
 
 class MenuPage extends Component {
   constructor(props) {
@@ -17,10 +18,23 @@ class MenuPage extends Component {
   }
 
   handleClick = (e) => {
-    console.log(e.currentTarget.parentElement.parentElement);
+    const { selectMenu } = this.props;
+    const item = e.currentTarget.parentElement.parentElement;
+    const data = [{
+      name: item.children[0].innerHTML,
+      price: item.children[1].innerHTML,
+      image: item.children[2].src
+    }];
+    const addToCart = selectMenu(data);
+    if (addToCart === true) {
+      return toastMessage({
+        type: 'success',
+        message: `${data.name} added to cart`
+      });
+    }
   }
 
-  componentDidMount= async () => {
+  componentDidMount = async () => {
     const { fetchMenu } = this.props;
     const response = await fetchMenu();
     if (response !== false) {
@@ -43,7 +57,6 @@ class MenuPage extends Component {
         <NavBar />
         <MenuForm
           onClick={this.handleClick}
-          itemsListRef={this.itemsListRef}
           menu={this.state.menu}
         />
         <Footer />
@@ -53,11 +66,13 @@ class MenuPage extends Component {
 }
 
 MenuPage.propTypes = {
-  fetchMenu: PropTypes.func.isRequired
+  fetchMenu: PropTypes.func.isRequired,
+  selectMenu: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = {
-  fetchMenu: () => fetchMenu
+  fetchMenu: () => fetchMenu,
+  selectMenu
 };
 
 export default connect(null, mapDispatchToProps)(MenuPage);

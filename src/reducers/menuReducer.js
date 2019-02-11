@@ -11,7 +11,7 @@ const menuReducer = (state = initialState, action = {}) => {
     case ADD_TO_CART:
       return {
         cartWeight: state.cartWeight + 1,
-        cardInfo: { ...state.cartInfo, data }
+        cartInfo: data
       };
     default: return state;
   }

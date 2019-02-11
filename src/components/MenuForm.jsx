@@ -22,14 +22,14 @@ import {
 } from '../styles/images';
 import Button from './Button';
 
-const MenuForm = ({ onClick, itemsListRef, menu }) => (
+const MenuForm = ({ onClick, menu }) => (
   <div className="gridContainer">
     <div className="gridTop" />
     <div className="gridRight" />
     <div className="gridMiddle">
       <div className="menuItems">
 
-        <div className="itemsList" ref={itemsListRef}>
+        <div className="itemsList">
           <div id="item" key="a" className="item">
             <span className="description">Buger</span>
             <span className="description">#1500 </span>
@@ -336,10 +336,6 @@ const MenuForm = ({ onClick, itemsListRef, menu }) => (
 
 MenuForm.propTypes = {
   onClick: PropTypes.func.isRequired,
-  itemsListRef: PropTypes.objectOf(PropTypes.oneOfType([
-    PropTypes.object, PropTypes.func, PropTypes.string,
-    PropTypes.number
-  ])),
   menu: PropTypes.any
 };
 

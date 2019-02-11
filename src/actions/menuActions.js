@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import { ADD_TO_CART } from '../actionTypes';
 import { Get } from '../utilities/apiRequests';
+import storage from '../utilities/storage';
 
 export const addToCart = data => ({
   type: ADD_TO_CART,
@@ -16,5 +17,15 @@ export const fetchMenu = async () => {
     return false;
   } catch (error) {
     return error.response;
+  }
+};
+
+export const selectMenu = data => (dispatch) => {
+  try {
+    const update = storage('cart', data);
+    dispatch(addToCart(update));
+    return true;
+  } catch (error) {
+    return error;
   }
 };
