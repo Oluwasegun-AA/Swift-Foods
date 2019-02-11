@@ -11,7 +11,7 @@ const ItemForm = ({
   <div id="item" key={Key} className="item">
     <span className="description">{name}</span>
     <span className="description">
-       #
+    &#8358;
       {price}
     </span>
     <img src={image} className="itemLogo" />

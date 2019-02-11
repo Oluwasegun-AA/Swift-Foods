@@ -10,7 +10,9 @@ import Login from './Login';
 import SignupForm from './SignupForm';
 import MenuForm from './MenuForm';
 import ItemForm from './ItemForm';
-import CartForm from './Cart';
+import CartForm from './CartForm';
+import EmptyCart from './EmptyCart';
+import CartElement from './CartElement';
 
 export {
   Button,
@@ -25,5 +27,7 @@ export {
   Login,
   MenuForm,
   ItemForm,
-  CartForm
+  CartForm,
+  EmptyCart,
+  CartElement
 };

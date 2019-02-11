@@ -20,24 +20,24 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">26.67% </span>
+        <span class="strong">18.18% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>4/15</span>
+        <span class='fraction'>4/22</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/2</span>
+        <span class='fraction'>0/8</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">0% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/4</span>
+        <span class='fraction'>0/5</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">28.57% </span>
+        <span class="strong">19.05% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>4/14</span>
+        <span class='fraction'>4/21</span>
       </div>
     </div>
   </div>
@@ -114,10 +114,35 @@
 69
 70
 71
-72</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -147,6 +172,15 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -170,7 +204,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -193,6 +229,13 @@ import NavBarNoAuth from '../components/NavBarNoAuth';
 import logout from '../actions/logout';
 &nbsp;
 class Navbar extends Component {
+<span class="fstat-no" title="function not covered" >  co</span>nstructor(props) {
+<span class="cstat-no" title="statement not covered" >    super(props);</span>
+<span class="cstat-no" title="statement not covered" >    this.state = {</span>
+      cartlength: 0
+    };
+  }
+&nbsp;
   onClick = <span class="fstat-no" title="function not covered" >(e</span>vent) =&gt; {
 <span class="cstat-no" title="statement not covered" >    event.preventDefault();</span>
     const {
@@ -216,10 +259,19 @@ class Navbar extends Component {
       }
     } = <span class="cstat-no" title="statement not covered" >this.props;</span>
 &nbsp;
+<span class="cstat-no" title="statement not covered" >    if (localStorage.getItem('cart')) {</span>
+      const cart = <span class="cstat-no" title="statement not covered" >JSON.parse(localStorage.getItem('cart'));</span>
+      const cartlength = <span class="cstat-no" title="statement not covered" >cart.length;</span>
+<span class="cstat-no" title="statement not covered" >      if (this.state.cartlength &lt; cartlength) {</span>
+<span class="cstat-no" title="statement not covered" >        this.setState({ cartlength });</span>
+      }
+    }
+&nbsp;
 <span class="cstat-no" title="statement not covered" >    if (isAuthenticated) {</span>
 <span class="cstat-no" title="statement not covered" >      return (</span>
         &lt;NavBarAuth
           signOut={signOut}
+          cartWeight={this.state.cartlength === 0 ? this.props.cartWeight : this.state.cartlength}
         /&gt;
       );
     }
@@ -238,12 +290,14 @@ class Navbar extends Component {
 }
 &nbsp;
 const mapStateToProps = <span class="fstat-no" title="function not covered" >st</span>ate =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
-  currentUser: state.currentUser
+  currentUser: state.currentUser,
+  cartWeight: state.menu.cartWeight
 });
 &nbsp;
 Navbar.propTypes = {
-  currentUser: PropTypes.objectOf(PropTypes.string).isRequired,
+  currentUser: PropTypes.objectOf(PropTypes.any).isRequired,
   signOut: PropTypes.func.isRequired,
+  cartWeight: PropTypes.number.isRequired,
   children: PropTypes.objectOf(PropTypes.string)
 };
 &nbsp;
@@ -262,7 +316,7 @@ export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Feb 04 2019 10:41:03 GMT+0100 (West Africa Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Feb 11 2019 15:42:19 GMT+0100 (West Africa Standard Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

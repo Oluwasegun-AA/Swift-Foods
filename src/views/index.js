@@ -3,7 +3,7 @@ import SignupPage from './SignupPage';
 import LandingPage from './LandingPage';
 import ErrorPage from './ErrorPage';
 import MenuPage from './MenuPage';
-import CartPage from './Cart'
+import CartPage from './Cart';
 
 export {
   LoginPage,

@@ -161,7 +161,50 @@
 116
 117
 118
-119</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -169,6 +212,16 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -270,7 +323,40 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -287,11 +373,21 @@ import FormInput from './FormInput';
 import Button from './Button';
 &nbsp;
 const SignupForm = <span class="fstat-no" title="function not covered" >({</span>
-  username,
-  email,
-  password,
-  confirmPassword,
-  login
+  onChange,
+  letterRef,
+  capitalRef,
+  numberRef,
+  lengthRef,
+  errorRef,
+  onKeyUp,
+  onBlur,
+  onFocus,
+  passwordToggle,
+  passwordRef,
+  signupHandler,
+  confirmPasswordRef,
+  comparePasswordRef,
+  comparePassword
 }) =&gt; (
 <span class="cstat-no" title="statement not covered" >  &lt;div className="gridContainer"&gt;</span>
     &lt;div className="gridTop" /&gt;
@@ -309,7 +405,9 @@ const SignupForm = <span class="fstat-no" title="function not covered" >({</span
               id="username"
               className="username"
               placeHolder="Enter Username"
-              onchange={username}
+              onChange={onChange}
+              onKeyUp={onKeyUp}
+              name="username"
             /&gt;
             &lt;span id="emailLabel"&gt;&lt;b&gt;Email Address&lt;/b&gt;&lt;/span&gt;
             &lt;FormInput
@@ -317,7 +415,9 @@ const SignupForm = <span class="fstat-no" title="function not covered" >({</span
               id="email"
               className="email"
               placeHolder="Enter Email Address"
-              onchange={email}
+              onChange={onChange}
+              onKeyUp={onKeyUp}
+              name="email"
             /&gt;
             &lt;span&gt;&lt;b&gt;Password&lt;/b&gt;&lt;/span&gt;
             &lt;FormInput
@@ -325,55 +425,74 @@ const SignupForm = <span class="fstat-no" title="function not covered" >({</span
               id="password"
               className="password"
               placeHolder="Enter Password"
-              onchange={password}
+              onChange={onChange}
+              onKeyUp={onKeyUp}
+              onBlur={onBlur}
+              onFocus={onFocus}
+              Ref={passwordRef}
+              name="password"
             /&gt;
             &lt;span&gt;&lt;b&gt;Confirm Password&lt;/b&gt;&lt;/span&gt;
             &lt;FormInput
               type="password"
-              id="password"
+              id="confirmPassword"
               className="password"
               placeHolder="Enter Password"
-              onchange={confirmPassword}
+              onChange={onChange}
+              name="confirmPassword"
+              Ref={confirmPasswordRef}
+              onKeyUp={comparePassword}
             /&gt;
+            &lt;div className="compare"&gt;
+              &lt;div
+                ref={comparePasswordRef}
+                className="comparePassword"
+              &gt;
+                Password not matching
+&nbsp;
+              &lt;/div&gt;
+            &lt;/div&gt;
             &lt;span className="showPassword"&gt;
               &lt;input
                 type="checkbox"
                 id="showPassword"
                 className="showPassword"
                 name="remember"
+                onClick={passwordToggle}
+                onChange={onChange}
               /&gt;
               &lt;span&gt;Show Password&lt;/span&gt;
             &lt;/span&gt;
             &lt;div className="signupButtonDiv"&gt;
-              &lt;Button className="loginBtn" value="Signup" onClick={login} /&gt;
+              &lt;Button className="loginBtn" value="Signup" onClick={signupHandler} /&gt;
             &lt;/div&gt;
             &lt;div className="errorMessageContainer"&gt;
               &lt;span id="notMember"&gt;
                 &lt;span&gt;Already a member?   &lt;/span&gt;
                 &lt;Link to="/login"&gt; Login&lt;/Link&gt;
               &lt;/span&gt;
-              &lt;div id="errorMessage" className="errorMessage"&gt;
+              &lt;div id="errorMessage" ref={errorRef} className="errorMessage"&gt;
                 &lt;span className="notMember"&gt;Password must contain :&lt;/span&gt;
-                &lt;h3 id="letter" className="invalid"&gt;
+                &lt;h3 id="letter" ref={letterRef} className="invalid"&gt;
                   A
                   {' '}
                   &lt;b&gt;Lowercase&lt;/b&gt;
                   {' '}
                   letter
                 &lt;/h3&gt;
-                &lt;h3 id="capital" className="invalid"&gt;
+                &lt;h3 id="capital" ref={capitalRef} className="invalid"&gt;
                   A
                   {' '}
                   &lt;b&gt;Capital (uppercase)&lt;/b&gt;
                   {' '}
                   letter
                 &lt;/h3&gt;
-                &lt;h3 id="number" className="invalid"&gt;
+                &lt;h3 id="number" ref={numberRef} className="invalid"&gt;
                   A
                   {' '}
                   &lt;b&gt;Number&lt;/b&gt;
                 &lt;/h3&gt;
-                &lt;h3 id="length" className="invalid"&gt;
+                &lt;h3 id="length" ref={lengthRef} className="invalid"&gt;
                   At least
                   &lt;b&gt; 8 characters&lt;/b&gt;
                 &lt;/h3&gt;
@@ -389,11 +508,21 @@ const SignupForm = <span class="fstat-no" title="function not covered" >({</span
 );
 &nbsp;
 SignupForm.propTypes = {
-  username: PropTypes.func.isRequired,
-  email: PropTypes.func.isRequired,
-  password: PropTypes.func.isRequired,
-  login: PropTypes.func.isRequired,
-  confirmPassword: PropTypes.func.isRequired
+  onChange: PropTypes.func.isRequired,
+  comparePassword: PropTypes.func.isRequired,
+  signupHandler: PropTypes.func.isRequired,
+  letterRef: PropTypes.objectOf(PropTypes.any).isRequired,
+  comparePasswordRef: PropTypes.objectOf(PropTypes.any).isRequired,
+  capitalRef: PropTypes.objectOf(PropTypes.any).isRequired,
+  numberRef: PropTypes.objectOf(PropTypes.any).isRequired,
+  lengthRef: PropTypes.objectOf(PropTypes.any).isRequired,
+  passwordRef: PropTypes.objectOf(PropTypes.any).isRequired,
+  confirmPasswordRef: PropTypes.objectOf(PropTypes.any).isRequired,
+  errorRef: PropTypes.objectOf(PropTypes.any).isRequired,
+  onKeyUp: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
+  onFocus: PropTypes.func.isRequired,
+  passwordToggle: PropTypes.func.isRequired
 };
 &nbsp;
 export default SignupForm;
@@ -403,7 +532,7 @@ export default SignupForm;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Feb 04 2019 10:41:03 GMT+0100 (West Africa Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Feb 11 2019 15:42:19 GMT+0100 (West Africa Standard Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>
