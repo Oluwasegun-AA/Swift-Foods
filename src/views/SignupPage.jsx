@@ -37,13 +37,9 @@ class SignupPage extends Component {
       count
     } = this.state;
     const { userSignup, history } = this.props;
-    console.log(count, password, confirmPassword);
     if ((password === confirmPassword) && (count === 4)) {
-      console.log('here');
       const response = await userSignup(this.state);
       if (response.success === true) {
-        console.log('here true');
-        console.log(response);
         history.push('/login');
         return toastMessage({
           type: 'success',

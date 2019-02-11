@@ -55,11 +55,7 @@ Visit [Admin Dashboard](https://shegsteham.github.io/Fast-Food-Fast/UI/admin.htm
 - `DELETE /api/v1/orders/< orderId >` -   Deletes an order in the database
 
 ## Known issues
-Everything works as expected; However:
-- the front-end is not complete, i.e. no authentication, few client-side
-   validation and no link for API calls yet.
-- Data structures were used to save data instead of a database, hence data gets
-   erased once the server is restarted
+- None
 
 ## Installation
 
@@ -82,4 +78,4 @@ Once the server starts-up, you can query the api at `http://localhost:8080/api/v
 ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
 
 - **[MIT license](https://shegsteham.github.io/Fast-Food-Fast/UI/LICENSE.md)**
-- Copyright 2018 © <a href="https://shegsteham.github.io/Fast-Food-Fast/UI/" target="_blank">Fast-Food-Fast</a>
+- Copyright 2018 © <a href="https://swift-foods.herokuapp.com/" target="_blank">Fast-Food-Fast</a>
