@@ -24,7 +24,10 @@ export const selectMenu = data => (dispatch) => {
   try {
     const update = storage('cart', data);
     dispatch(addToCart(update));
-    return true;
+    return {
+      success: true,
+      data
+    };
   } catch (error) {
     return error;
   }

@@ -26,10 +26,10 @@ class MenuPage extends Component {
       image: item.children[2].src
     }];
     const addToCart = selectMenu(data);
-    if (addToCart === true) {
+    if (addToCart.success === true) {
       return toastMessage({
         type: 'success',
-        message: `${data.name} added to cart`
+        message: `${addToCart.data.name} added to cart`
       });
     }
   }
