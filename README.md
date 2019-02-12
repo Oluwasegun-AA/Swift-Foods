@@ -1,5 +1,5 @@
 # Fast Food Fast
-[![Build Status](https://travis-ci.org/shegsteham/Swift-Foods.svg?branch=develop)](https://travis-ci.org/shegsteham/Swift-Foods)    [![Coverage Status](https://coveralls.io/repos/github/shegsteham/Swift-Foods/badge.svg)](https://coveralls.io/github/shegsteham/Swift-Foods)    ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
+[![Build Status](https://travis-ci.org/shegsteham/Swift-Foods.svg?branch=develop)](https://travis-ci.org/shegsteham/Swift-Foods) ![GitHub](https://img.shields.io/github/license/mashape/apistatus.svg)
 
 ## Table of Contents
 
