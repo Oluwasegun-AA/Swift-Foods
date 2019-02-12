@@ -15,6 +15,7 @@ export const loginRequest = data => async (dispatch) => {
     user_name: data.username,
     user_password: data.password
   };
+  console.log(payload)
   try {
     response = await Post('/auth/login', payload);
     if (response.success === true) {

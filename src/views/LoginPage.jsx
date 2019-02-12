@@ -30,6 +30,7 @@ export class LoginPage extends Component {
     if (this.state.count === 4) {
       const { history, userLogin } = this.props;
       const response = await userLogin(this.state);
+      console.log(response);
       if (response) {
         if (response === true) {
           toastMessage({
@@ -88,7 +89,7 @@ export class LoginPage extends Component {
       length.className = 'invalid';
     }
     if (count === 4) {
-      this.setState({ count: '4' });
+      this.setState({ count: 4 });
       error.style.display = 'none';
     }
   }

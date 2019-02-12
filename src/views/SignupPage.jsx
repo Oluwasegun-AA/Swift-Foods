@@ -14,7 +14,7 @@ export class SignupPage extends Component {
       email: '',
       password: '',
       confirmPassword: '',
-      count: '0'
+      count: 0
     };
   }
 
@@ -42,8 +42,8 @@ export class SignupPage extends Component {
         type: 'danger',
         message: 'Please check your internet connection',
       });
-    }
-    if (password !== confirmPassword) {
+    // eslint-disable-next-line no-else-return
+    } else if (password !== confirmPassword) {
       return toastMessage({
         type: 'danger',
         message: 'Password Not Matching',
@@ -92,7 +92,8 @@ validate = (value, attribute, check) => {
       length.className = 'invalid';
     }
     if (count === 4) {
-      this.setState({ count: '4' });
+      console.log(count)
+      this.setState({ count: 4 });
       error.style.display = 'none';
     }
   }
