@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { logo, cart, avarter } from '../styles/images';
 
-const NavBarAuth = ({ signOut, cartWeight }) => (
+const NavBarAuth = ({
+  signOut,
+  cartWeight
+}) => (
   <nav className="navBar">
     <div className="headerContent">
       <span className="logo">

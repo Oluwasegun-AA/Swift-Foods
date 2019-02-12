@@ -11,17 +11,11 @@ import NavBar from './Navbar';
 import toastMessage from '../utilities/toastMessage';
 import { resetCart } from '../actions/menuActions';
 
-class CartPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-    this.addressRef = React.createRef();
-  }
-
-  handleOnClick = () => {
+export class CartPage extends Component {
+  handleOnClick = (e) => {
     const { history, resetCart } = this.props;
-    const address = this.addressRef.current.value;
+    const target = e.currentTarget.parentElement;
+    const address = target.children[1].children[1].children[0].value;
     if (address.length > 4) {
       localStorage.removeItem('cart');
       resetCart();

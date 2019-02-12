@@ -20,28 +20,28 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">13.33% </span>
+        <span class="strong">86.67% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>2/15</span>
+        <span class='fraction'>13/15</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Branches</span>
-        <span class='fraction'>0/4</span>
+        <span class='fraction'>2/4</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">0% </span>
+        <span class="strong">100% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>0/3</span>
+        <span class='fraction'>3/3</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">15.38% </span>
+        <span class="strong">84.62% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>2/13</span>
+        <span class='fraction'>11/13</span>
       </div>
     </div>
   </div>
-  <div class='status-line low'></div>
+  <div class='status-line high'></div>
 <pre><table class="coverage">
 <tr><td class="line-count quiet">1
 2
@@ -83,9 +83,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -94,23 +110,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* eslint-disable camelcase */
@@ -118,34 +118,34 @@ import { Post } from '../utilities/apiRequests';
 import { SIGN_UP_SUCCESS } from '../actionTypes';
 import toastMessage from '../utilities/toastMessage';
 &nbsp;
-export const signupSuccess = <span class="fstat-no" title="function not covered" >us</span>erInfo =&gt; (<span class="cstat-no" title="statement not covered" >{</span>
+export const signupSuccess = userInfo =&gt; ({
   type: SIGN_UP_SUCCESS,
   userInfo,
 });
-export const signupUser = <span class="fstat-no" title="function not covered" >us</span>erDetails =&gt; <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >as</span>ync (dispatch) =&gt; {</span>
-  const data = <span class="cstat-no" title="statement not covered" >{</span>
+export const signupUser = userDetails =&gt; async (dispatch) =&gt; {
+  const data = {
     user_name: userDetails.username,
     user_role: 'User',
     user_email: userDetails.email,
     user_password: userDetails.password
   };
-<span class="cstat-no" title="statement not covered" >  try {</span>
-    const response = <span class="cstat-no" title="statement not covered" >await Post('/auth/signup', data);</span>
-<span class="cstat-no" title="statement not covered" >    if (response.success === true) {</span>
-      const { User_sent } = <span class="cstat-no" title="statement not covered" >response;</span>
-<span class="cstat-no" title="statement not covered" >      dispatch(signupSuccess(User_sent));</span>
-<span class="cstat-no" title="statement not covered" >      return response;</span>
+  try {
+    const response = await Post('/auth/signup', data);
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (response.success === true) {
+      const { User_sent } = response;
+      dispatch(signupSuccess(User_sent));
+      return response;
     }
 <span class="cstat-no" title="statement not covered" >    return response;</span>
   } catch (error) {
-<span class="cstat-no" title="statement not covered" >    if (error.message === 'Network Error') {</span>
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (error.message === 'Network Error') {
 <span class="cstat-no" title="statement not covered" >      return toastMessage({</span>
         type: 'danger',
         message: 'Could not connect to the internet. '
         + 'Please check your internet connection.'
       });
     }
-<span class="cstat-no" title="statement not covered" >    return error;</span>
+    return error;
   }
 };
 &nbsp;</pre></td></tr>
@@ -154,7 +154,7 @@ export const signupUser = <span class="fstat-no" title="function not covered" >u
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Mon Feb 11 2019 19:10:17 GMT+0100 (West Africa Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Feb 12 2019 20:28:46 GMT+0100 (West Africa Standard Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

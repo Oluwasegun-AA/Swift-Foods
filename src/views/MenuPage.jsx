@@ -8,7 +8,7 @@ import NavBar from './Navbar';
 import { fetchMenu, selectMenu } from '../actions/menuActions';
 import toastMessage from '../utilities/toastMessage';
 
-class MenuPage extends Component {
+export class MenuPage extends Component {
   constructor(props) {
     super(props);
     this.state = {

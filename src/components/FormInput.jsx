@@ -48,9 +48,6 @@ FormInput.propTypes = {
 
 FormInput.defaultProps = {
   Ref: React.createRef(),
-  onKeyUp: () => (''),
-  onBlur: () => (''),
-  onFocus: () => ('')
 };
 
 export default FormInput;
