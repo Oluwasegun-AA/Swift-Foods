@@ -16,14 +16,6 @@ export class SignupPage extends Component {
       confirmPassword: '',
       count: '0'
     };
-    this.letterRef = React.createRef();
-    this.capitalRef = React.createRef();
-    this.numberRef = React.createRef();
-    this.lengthRef = React.createRef();
-    this.errorRef = React.createRef();
-    this.passwordRef = React.createRef();
-    this.confirmPasswordRef = React.createRef();
-    this.comparePasswordRef = React.createRef();
   }
 
   handleOnChange = (event) => {
@@ -135,14 +127,6 @@ render() {
         signupHandler={this.handleOnSubmit}
         onChange={this.handleOnChange}
         onKeyUp={this.handleOnKeyUp}
-        letterRef={this.letterRef}
-        capitalRef={this.capitalRef}
-        numberRef={this.numberRef}
-        passwordRef={this.passwordRef}
-        confirmPasswordRef={this.confirmPasswordRef}
-        comparePasswordRef={this.comparePasswordRef}
-        lengthRef={this.lengthRef}
-        errorRef={this.errorRef}
         onBlur={this.handleOnBlur}
         onFocus={this.handleOnFocus}
         passwordToggle={this.viewPassword}
