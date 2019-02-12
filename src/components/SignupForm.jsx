@@ -7,19 +7,11 @@ import Button from './Button';
 
 const SignupForm = ({
   onChange,
-  letterRef,
-  capitalRef,
-  numberRef,
-  lengthRef,
-  errorRef,
   onKeyUp,
   onBlur,
   onFocus,
   passwordToggle,
-  passwordRef,
   signupHandler,
-  confirmPasswordRef,
-  comparePasswordRef,
   comparePassword
 }) => (
   <div className="gridContainer">
@@ -62,7 +54,6 @@ const SignupForm = ({
               onKeyUp={onKeyUp}
               onBlur={onBlur}
               onFocus={onFocus}
-              Ref={passwordRef}
               name="password"
             />
             <span><b>Confirm Password</b></span>
@@ -73,12 +64,10 @@ const SignupForm = ({
               placeHolder="Enter Password"
               onChange={onChange}
               name="confirmPassword"
-              Ref={confirmPasswordRef}
               onKeyUp={comparePassword}
             />
             <div className="compare">
               <div
-                ref={comparePasswordRef}
                 className="comparePassword"
               />
             </div>
@@ -101,28 +90,28 @@ const SignupForm = ({
                 <span>Already a member?   </span>
                 <Link to="/login"> Login</Link>
               </span>
-              <div id="errorMessage" ref={errorRef} className="errorMessage">
+              <div id="errorMessage" className="errorMessage">
                 <span className="notMember">Password must contain :</span>
-                <h3 id="letter" ref={letterRef} className="invalid">
+                <h3 id="letter" className="invalid">
                   A
                   {' '}
                   <b>Lowercase</b>
                   {' '}
                   letter
                 </h3>
-                <h3 id="capital" ref={capitalRef} className="invalid">
+                <h3 id="capital" className="invalid">
                   A
                   {' '}
                   <b>Capital (uppercase)</b>
                   {' '}
                   letter
                 </h3>
-                <h3 id="number" ref={numberRef} className="invalid">
+                <h3 id="number" className="invalid">
                   A
                   {' '}
                   <b>Number</b>
                 </h3>
-                <h3 id="length" ref={lengthRef} className="invalid">
+                <h3 id="length" className="invalid">
                   At least
                   <b> 8 characters</b>
                 </h3>
@@ -141,18 +130,15 @@ SignupForm.propTypes = {
   onChange: PropTypes.func.isRequired,
   comparePassword: PropTypes.func.isRequired,
   signupHandler: PropTypes.func.isRequired,
-  letterRef: PropTypes.objectOf(PropTypes.any).isRequired,
-  comparePasswordRef: PropTypes.objectOf(PropTypes.any).isRequired,
-  capitalRef: PropTypes.objectOf(PropTypes.any).isRequired,
-  numberRef: PropTypes.objectOf(PropTypes.any).isRequired,
-  lengthRef: PropTypes.objectOf(PropTypes.any).isRequired,
-  passwordRef: PropTypes.objectOf(PropTypes.any).isRequired,
-  confirmPasswordRef: PropTypes.objectOf(PropTypes.any).isRequired,
-  errorRef: PropTypes.objectOf(PropTypes.any).isRequired,
   onKeyUp: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
   onFocus: PropTypes.func.isRequired,
   passwordToggle: PropTypes.func.isRequired
+};
+
+SignupForm.defaultProps = {
+  // eslint-disable-next-line react/default-props-match-prop-types
+  comparePassword: () => ''
 };
 
 export default SignupForm;

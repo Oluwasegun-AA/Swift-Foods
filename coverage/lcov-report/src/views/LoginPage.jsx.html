@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">74.47% </span>
+        <span class="strong">72.92% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>35/47</span>
+        <span class='fraction'>35/48</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">35.71% </span>
@@ -35,9 +35,9 @@
         <span class='fraction'>8/9</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">74.47% </span>
+        <span class="strong">72.92% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>35/47</span>
+        <span class='fraction'>35/48</span>
       </div>
     </div>
   </div>
@@ -192,17 +192,7 @@
 147
 148
 149
-150
-151
-152
-153
-154
-155
-156
-157
-158
-159
-160</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+150</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -231,21 +221,17 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -254,7 +240,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -341,12 +327,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -390,33 +370,29 @@ export class LoginPage extends Component {
 &nbsp;
   handleOnSubmit = async (e) =&gt; {
     e.preventDefault();
-    // if (this.state.count === 4) {
-    const { history, userLogin } = <span class="cstat-no" title="statement not covered" >this.props;</span>
-    const response = <span class="cstat-no" title="statement not covered" >await userLogin(this.state);</span>
-<span class="cstat-no" title="statement not covered" >    if (response) {</span>
-<span class="cstat-no" title="statement not covered" >      if (response.success === true) {</span>
-<span class="cstat-no" title="statement not covered" >        toastMessage({</span>
-          type: 'success',
-          message: 'Login Successful'
-        });
-<span class="cstat-no" title="statement not covered" >        history.push('/');</span>
-      } else <span class="cstat-no" title="statement not covered" >if (response.success === false) {</span>
-<span class="cstat-no" title="statement not covered" >        toastMessage({</span>
-          type: 'danger',
-          message: 'Incorrect email or password. Please try again'
-        });
-      } else {
-<span class="cstat-no" title="statement not covered" >        toastMessage({</span>
-          type: 'danger',
-          message: 'Incorrect email or password. Please try again'
-        });
+<span class="cstat-no" title="statement not covered" >    if (this.state.count === 4) {</span>
+      const { history, userLogin } = <span class="cstat-no" title="statement not covered" >this.props;</span>
+      const response = <span class="cstat-no" title="statement not covered" >await userLogin(this.state);</span>
+<span class="cstat-no" title="statement not covered" >      console.log(response);</span>
+<span class="cstat-no" title="statement not covered" >      if (response) {</span>
+<span class="cstat-no" title="statement not covered" >        if (response === true) {</span>
+<span class="cstat-no" title="statement not covered" >          toastMessage({</span>
+            type: 'success',
+            message: 'Login Successful'
+          });
+<span class="cstat-no" title="statement not covered" >          history.push('/');</span>
+        } else {
+<span class="cstat-no" title="statement not covered" >          return toastMessage({</span>
+            type: 'danger',
+            message: 'Incorrect email or password. Please try again'
+          });
+        }
       }
     }
-    // }
-    // return toastMessage({
-    //   type: 'danger',
-    //   message: 'Invalid Username or Password',
-    // });
+<span class="cstat-no" title="statement not covered" >    return toastMessage({</span>
+      type: 'danger',
+      message: 'Invalid Username or Password',
+    });
   }
 &nbsp;
   validate = (value, attribute, check) =&gt; {
@@ -456,7 +432,7 @@ export class LoginPage extends Component {
 <span class="cstat-no" title="statement not covered" >      length.className = 'invalid';</span>
     }
     <span class="missing-if-branch" title="else path not taken" >E</span>if (count === 4) {
-      this.setState({ count: '4' });
+      this.setState({ count: 4 });
       error.style.display = 'none';
     }
   }
@@ -489,12 +465,6 @@ render() {
           loginHandler={this.handleOnSubmit}
           onChange={this.handleOnChange}
           onKeyUp={this.handleOnKeyUp}
-          letterRef={this.letterRef}
-          capitalRef={this.capitalRef}
-          numberRef={this.numberRef}
-          passwordRef={this.passwordRef}
-          lengthRef={this.lengthRef}
-          errorRef={this.errorRef}
           onBlur={this.handleOnBlur}
           onFocus={this.handleOnFocus}
           passwordToggle={this.viewPassword}
@@ -526,7 +496,7 @@ export default connect(null, mapDispatchToProps)(LoginPage);
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Feb 12 2019 20:38:32 GMT+0100 (West Africa Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Feb 12 2019 23:58:04 GMT+0100 (West Africa Standard Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

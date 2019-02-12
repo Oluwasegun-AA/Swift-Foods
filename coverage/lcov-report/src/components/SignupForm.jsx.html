@@ -20,9 +20,9 @@
     </h1>
     <div class='clearfix'>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">80% </span>
         <span class="quiet">Statements</span>
-        <span class='fraction'>3/3</span>
+        <span class='fraction'>4/5</span>
       </div>
       <div class='fl pad1y space-right2'>
         <span class="strong">100% </span>
@@ -30,14 +30,14 @@
         <span class='fraction'>0/0</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">50% </span>
         <span class="quiet">Functions</span>
-        <span class='fraction'>1/1</span>
+        <span class='fraction'>1/2</span>
       </div>
       <div class='fl pad1y space-right2'>
-        <span class="strong">100% </span>
+        <span class="strong">80% </span>
         <span class="quiet">Lines</span>
-        <span class='fraction'>3/3</span>
+        <span class='fraction'>4/5</span>
       </div>
     </div>
   </div>
@@ -187,21 +187,7 @@
 142
 143
 144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155
-156
-157
-158
-159</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+145</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -209,14 +195,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">22x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -337,9 +315,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -350,12 +325,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">22x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -368,19 +340,11 @@ import Button from './Button';
 &nbsp;
 const SignupForm = ({
   onChange,
-  letterRef,
-  capitalRef,
-  numberRef,
-  lengthRef,
-  errorRef,
   onKeyUp,
   onBlur,
   onFocus,
   passwordToggle,
-  passwordRef,
   signupHandler,
-  confirmPasswordRef,
-  comparePasswordRef,
   comparePassword
 }) =&gt; (
   &lt;div className="gridContainer"&gt;
@@ -423,7 +387,6 @@ const SignupForm = ({
               onKeyUp={onKeyUp}
               onBlur={onBlur}
               onFocus={onFocus}
-              Ref={passwordRef}
               name="password"
             /&gt;
             &lt;span&gt;&lt;b&gt;Confirm Password&lt;/b&gt;&lt;/span&gt;
@@ -434,12 +397,10 @@ const SignupForm = ({
               placeHolder="Enter Password"
               onChange={onChange}
               name="confirmPassword"
-              Ref={confirmPasswordRef}
               onKeyUp={comparePassword}
             /&gt;
             &lt;div className="compare"&gt;
               &lt;div
-                ref={comparePasswordRef}
                 className="comparePassword"
               /&gt;
             &lt;/div&gt;
@@ -462,28 +423,28 @@ const SignupForm = ({
                 &lt;span&gt;Already a member?   &lt;/span&gt;
                 &lt;Link to="/login"&gt; Login&lt;/Link&gt;
               &lt;/span&gt;
-              &lt;div id="errorMessage" ref={errorRef} className="errorMessage"&gt;
+              &lt;div id="errorMessage" className="errorMessage"&gt;
                 &lt;span className="notMember"&gt;Password must contain :&lt;/span&gt;
-                &lt;h3 id="letter" ref={letterRef} className="invalid"&gt;
+                &lt;h3 id="letter" className="invalid"&gt;
                   A
                   {' '}
                   &lt;b&gt;Lowercase&lt;/b&gt;
                   {' '}
                   letter
                 &lt;/h3&gt;
-                &lt;h3 id="capital" ref={capitalRef} className="invalid"&gt;
+                &lt;h3 id="capital" className="invalid"&gt;
                   A
                   {' '}
                   &lt;b&gt;Capital (uppercase)&lt;/b&gt;
                   {' '}
                   letter
                 &lt;/h3&gt;
-                &lt;h3 id="number" ref={numberRef} className="invalid"&gt;
+                &lt;h3 id="number" className="invalid"&gt;
                   A
                   {' '}
                   &lt;b&gt;Number&lt;/b&gt;
                 &lt;/h3&gt;
-                &lt;h3 id="length" ref={lengthRef} className="invalid"&gt;
+                &lt;h3 id="length" className="invalid"&gt;
                   At least
                   &lt;b&gt; 8 characters&lt;/b&gt;
                 &lt;/h3&gt;
@@ -502,18 +463,15 @@ SignupForm.propTypes = {
   onChange: PropTypes.func.isRequired,
   comparePassword: PropTypes.func.isRequired,
   signupHandler: PropTypes.func.isRequired,
-  letterRef: PropTypes.objectOf(PropTypes.any).isRequired,
-  comparePasswordRef: PropTypes.objectOf(PropTypes.any).isRequired,
-  capitalRef: PropTypes.objectOf(PropTypes.any).isRequired,
-  numberRef: PropTypes.objectOf(PropTypes.any).isRequired,
-  lengthRef: PropTypes.objectOf(PropTypes.any).isRequired,
-  passwordRef: PropTypes.objectOf(PropTypes.any).isRequired,
-  confirmPasswordRef: PropTypes.objectOf(PropTypes.any).isRequired,
-  errorRef: PropTypes.objectOf(PropTypes.any).isRequired,
   onKeyUp: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
   onFocus: PropTypes.func.isRequired,
   passwordToggle: PropTypes.func.isRequired
+};
+&nbsp;
+SignupForm.defaultProps = {
+  // eslint-disable-next-line react/default-props-match-prop-types
+  comparePassword: <span class="fstat-no" title="function not covered" >()</span> =&gt; <span class="cstat-no" title="statement not covered" >''</span>
 };
 &nbsp;
 export default SignupForm;
@@ -523,7 +481,7 @@ export default SignupForm;
 </div><!-- /wrapper -->
 <div class='footer quiet pad2 space-top1 center small'>
   Code coverage
-  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Feb 12 2019 20:38:32 GMT+0100 (West Africa Standard Time)
+  generated by <a href="https://istanbul.js.org/" target="_blank">istanbul</a> at Tue Feb 12 2019 23:58:04 GMT+0100 (West Africa Standard Time)
 </div>
 </div>
 <script src="../../prettify.js"></script>

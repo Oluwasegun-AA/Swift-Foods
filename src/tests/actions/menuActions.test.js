@@ -3,7 +3,7 @@ import configureMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import chai from 'chai';
 import * as apiRequests from '../../utilities/apiRequests';
-import { fetchMenu, selectMenu } from '../../actions/menuActions';
+import { fetchMenu, selectMenu, resetCart } from '../../actions/menuActions';
 
 const { expect } = chai;
 const middleware = [thunk];
@@ -54,6 +54,7 @@ describe('menu Actions', () => {
     });
     const stubApiRequest = sinon.stub(apiRequests, 'Post')
       .returns(res);
+    await store.dispatch(resetCart());
     const response = await store.dispatch(selectMenu());
     expect(response.success).to.equal(true);
     stubApiRequest.restore();

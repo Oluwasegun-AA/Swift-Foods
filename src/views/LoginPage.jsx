@@ -27,33 +27,29 @@ export class LoginPage extends Component {
 
   handleOnSubmit = async (e) => {
     e.preventDefault();
-    // if (this.state.count === 4) {
-    const { history, userLogin } = this.props;
-    const response = await userLogin(this.state);
-    if (response) {
-      if (response.success === true) {
-        toastMessage({
-          type: 'success',
-          message: 'Login Successful'
-        });
-        history.push('/');
-      } else if (response.success === false) {
-        toastMessage({
-          type: 'danger',
-          message: 'Incorrect email or password. Please try again'
-        });
-      } else {
-        toastMessage({
-          type: 'danger',
-          message: 'Incorrect email or password. Please try again'
-        });
+    if (this.state.count === 4) {
+      const { history, userLogin } = this.props;
+      const response = await userLogin(this.state);
+      console.log(response);
+      if (response) {
+        if (response === true) {
+          toastMessage({
+            type: 'success',
+            message: 'Login Successful'
+          });
+          history.push('/');
+        } else {
+          return toastMessage({
+            type: 'danger',
+            message: 'Incorrect email or password. Please try again'
+          });
+        }
       }
     }
-    // }
-    // return toastMessage({
-    //   type: 'danger',
-    //   message: 'Invalid Username or Password',
-    // });
+    return toastMessage({
+      type: 'danger',
+      message: 'Invalid Username or Password',
+    });
   }
 
   validate = (value, attribute, check) => {
@@ -93,7 +89,7 @@ export class LoginPage extends Component {
       length.className = 'invalid';
     }
     if (count === 4) {
-      this.setState({ count: '4' });
+      this.setState({ count: 4 });
       error.style.display = 'none';
     }
   }
@@ -126,12 +122,6 @@ render() {
           loginHandler={this.handleOnSubmit}
           onChange={this.handleOnChange}
           onKeyUp={this.handleOnKeyUp}
-          letterRef={this.letterRef}
-          capitalRef={this.capitalRef}
-          numberRef={this.numberRef}
-          passwordRef={this.passwordRef}
-          lengthRef={this.lengthRef}
-          errorRef={this.errorRef}
           onBlur={this.handleOnBlur}
           onFocus={this.handleOnFocus}
           passwordToggle={this.viewPassword}
