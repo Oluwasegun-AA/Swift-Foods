@@ -92,7 +92,6 @@ validate = (value, attribute, check) => {
       length.className = 'invalid';
     }
     if (count === 4) {
-      console.log(count)
       this.setState({ count: 4 });
       error.style.display = 'none';
     }
