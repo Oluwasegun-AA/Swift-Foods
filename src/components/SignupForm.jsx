@@ -80,10 +80,7 @@ const SignupForm = ({
               <div
                 ref={comparePasswordRef}
                 className="comparePassword"
-              >
-                Password not matching
-
-              </div>
+              />
             </div>
             <span className="showPassword">
               <input

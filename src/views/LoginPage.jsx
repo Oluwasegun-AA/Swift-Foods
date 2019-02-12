@@ -17,12 +17,6 @@ export class LoginPage extends Component {
       password: '',
       count: 0
     };
-    this.letterRef = React.createRef();
-    this.capitalRef = React.createRef();
-    this.numberRef = React.createRef();
-    this.lengthRef = React.createRef();
-    this.errorRef = React.createRef();
-    this.passwordRef = React.createRef();
   }
 
   handleOnChange = (e) => {
@@ -64,58 +58,62 @@ export class LoginPage extends Component {
 
   validate = (value, attribute, check) => {
     if (value.match(check)) {
-      attribute.classList.remove('invalid');
-      attribute.classList.add('valid');
+      attribute.className = 'valid';
     } else {
-      attribute.classList.remove('valid');
-      attribute.classList.add('invalid');
+      attribute.className = 'invalid';
     }
   }
 
   handleOnKeyUp = (e) => {
+    const error = e.currentTarget.parentElement.parentElement.children[6].children[1];
+    const letter = e.currentTarget.parentElement.parentElement.children[6].children[1].children[1];
+    const capital = e.currentTarget.parentElement.parentElement.children[6].children[1].children[2];
+    const number = e.currentTarget.parentElement.parentElement.children[6].children[1].children[3];
+    const length = e.currentTarget.parentElement.parentElement.children[6].children[1].children[4];
     let count = 0;
     const { value } = e.target;
 
     // Validate lowercase letters
     const lowerCase = /[a-z]/g;
-    this.validate(value, this.letterRef.current, lowerCase, count += 1);
+    this.validate(value, letter, lowerCase, count += 1);
 
     // Validate capital letters
     const upperCase = /[A-Z]/g;
-    this.validate(value, this.capitalRef.current, upperCase, count += 1);
+    this.validate(value, capital, upperCase, count += 1);
 
     // Validate numbers
     const numbers = /[0-9]/g;
-    this.validate(value, this.numberRef.current, numbers, count += 1);
+    this.validate(value, number, numbers, count += 1);
 
     // Validate length
     if (value.length >= 8) {
-      this.lengthRef.current.classList.remove('invalid');
-      this.lengthRef.current.classList.add('valid');
+      length.className = 'valid';
       count += 1;
     } else {
-      this.lengthRef.current.classList.remove('valid');
-      this.lengthRef.current.classList.add('invalid');
+      length.className = 'invalid';
     }
     if (count === 4) {
       this.setState({ count: '4' });
-      this.errorRef.current.style.display = 'none';
+      error.style.display = 'none';
     }
   }
 
-handleOnBlur = () => {
-  this.errorRef.current.style.display = 'none';
+  handleOnBlur = (e) => {
+    const element = e.currentTarget.parentElement.parentElement;
+    element.children[6].children[1].style.display = 'none';
+  }
+
+handleOnFocus = (e) => {
+  const element = e.currentTarget.parentElement.parentElement;
+  element.children[6].children[1].style.display = 'block';
 }
 
-handleOnFocus = () => {
-  this.errorRef.current.style.display = 'block';
-}
-
-viewPassword = () => {
-  if (this.passwordRef.current.type === 'password') {
-    this.passwordRef.current.type = 'text';
+viewPassword = (e) => {
+  const element = e.currentTarget.parentElement.parentElement;
+  if (element.children[3].children[0].type === 'password') {
+    element.children[3].children[0].type = 'text';
   } else {
-    this.passwordRef.current.type = 'password';
+    element.children[3].children[0].type = 'password';
   }
 }
 

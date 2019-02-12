@@ -5,7 +5,7 @@ import {
 } from '../components';
 import NavBar from './Navbar';
 
-class ErrorPageView extends Component {
+export class ErrorPageView extends Component {
   constructor(props) {
     super(props);
     this.state = {};

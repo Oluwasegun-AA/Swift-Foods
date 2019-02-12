@@ -21,6 +21,7 @@ export const loginRequest = data => async (dispatch) => {
       const { token, user } = response;
       setAuthorizationToken(token);
       dispatch(setCurrentUser(user));
+      return true;
     }
     return response;
   } catch (error) {
@@ -28,7 +29,7 @@ export const loginRequest = data => async (dispatch) => {
   }
 };
 
-export const auth = async (dispatch) => {
+export const auth = () => async (dispatch) => {
   try {
     const data = await Post('/auth');
     const {

@@ -16,7 +16,7 @@ const menuReducer = (state = initialState, action = {}) => {
     case CLEAR_CART:
       return {
         cartWeight: 0,
-        cartInfo: ''
+        cartInfo: {}
       };
     default: return state;
   }
