@@ -28,7 +28,33 @@ describe('Unit test for CartPage', () => {
       currentTarget: {
         parentElement: {
           parentElement: {
-            children: [{}, {}, {}, { children: [{ a: { children: { type: 'password' } } }] }, {}, { children: [{ a: { type: '' } }] }, {}, { children: [{ a: { type: '' } }] }, { children: [{ a: { innerHTML: '', style: { display: '', color: '' } } }] }, {}, {}, { children: [{}, { style: { display: '' }, children: [{ a: { className: '' } }, { a: { className: '' } }, { a: { className: '' } }, { a: { className: '' } }, { a: { className: '' } }] }] }]
+            children: [{},
+              {},
+              {},
+              {
+                children: [{
+                  a: {
+                    children: {
+                      type: 'password'
+                    }
+                  }
+                }]
+              },
+              {},
+              {
+                children: [{
+                  a: { type: '' }
+                }]
+              },
+              {},
+              {
+                children: [{ a: { type: '' } }]
+              },
+              {
+                children: [{
+                  a: { innerHTML: '', style: { display: '', color: '' } }
+                }]
+              }, {}, {}, { children: [{}, { style: { display: '' }, children: [{ a: { className: '' } }, { a: { className: '' } }, { a: { className: '' } }, { a: { className: '' } }, { a: { className: '' } }] }] }]
           }
         }
       }
@@ -42,7 +68,40 @@ describe('Unit test for CartPage', () => {
       currentTarget: {
         parentElement: {
           parentElement: {
-            children: [{}, {}, {}, { children: [{ a: { children: { type: 'password' } } }] }, {}, { children: [{ a: { type: 'password' } }] }, {}, { children: [{ a: { type: '' } }] }, { children: [{ a: { innerHTML: '', style: { display: '', color: '' } } }] }, {}, {}, { children: [{}, { style: { display: '' }, children: [{ a: { className: '' } }, { a: { className: '' } }, { a: { className: '' } }, { a: { className: '' } }, { a: { className: '' } }] }] }]
+            children: [{},
+              {},
+              {},
+              {
+                children: [{ a: { children: { type: 'password' } } }]
+              },
+              {},
+              {
+                children: [{ a: { type: 'password' } }]
+              },
+              {},
+              {
+                children: [{ a: { type: '' } }]
+              },
+              {
+                children: [{
+                  a: {
+                    innerHTML: '', style: { display: '', color: '' }
+                  }
+                }]
+              },
+              {},
+              {},
+              {
+                children: [{},
+                  {
+                    style: { display: '' },
+                    children: [{ a: { className: '' } },
+                      { a: { className: '' } },
+                      { a: { className: '' } },
+                      { a: { className: '' } },
+                      { a: { className: '' } }]
+                  }]
+              }]
           }
         }
       }

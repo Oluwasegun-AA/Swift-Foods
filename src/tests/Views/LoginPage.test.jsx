@@ -29,7 +29,55 @@ describe('Unit test for CartPage', () => {
       currentTarget: {
         parentElement: {
           parentElement: {
-            children: [{}, {}, {}, { children: [{ a: { children: { type: 'password' } } }] }, {}, {}, { children: [{}, { style: { display: '' }, children: [{ a: { className: '' } }, { a: { className: '' } }, { a: { className: '' } }, { a: { className: '' } }, { a: { className: '' } }] }] }]
+            children: [{},
+              {},
+              {},
+              {
+                children: [
+                  {
+                    a: {
+                      children: {
+                        type: 'password'
+                      }
+                    }
+                  }
+                ]
+              },
+              {},
+              {},
+              {
+                children: [
+                  {},
+                  {
+                    style: {
+                      display: ''
+                    },
+                    children: [
+                      {
+                        a: {
+                          className: ''
+                        }
+                      },
+                      {
+                        a: {
+                          className: ''
+                        }
+                      },
+                      {
+                        a: {
+                          className: ''
+                        }
+                      },
+                      {
+                        a: {
+                          className: ''
+                        }
+                      },
+                      {
+                        a: { className: '' }
+                      }]
+                  }]
+              }]
           }
         }
       }
