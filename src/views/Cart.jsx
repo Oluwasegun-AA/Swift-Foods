@@ -19,13 +19,13 @@ export class CartPage extends Component {
     if (address.length > 4) {
       localStorage.removeItem('cart');
       resetCart();
-      toastMessage({
+      history.push();
+      return toastMessage({
         type: 'Success',
         message: `Orders Placed Successfully to "${address}"`,
         routeMessage: 'click here to return home',
         route: '/'
       });
-      history.push();
     } return toastMessage({
       type: 'danger',
       message: 'Please enter a valid home address',

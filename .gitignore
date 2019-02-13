@@ -1,10 +1,10 @@
-build/
 .vscode/
 src/tests/components/__snapshots__/
 bootstrap/
 .DS_Store
 .vscode
-coverage/
 yarn.lock
 .env
 node_modules/
+coverage/
+build/

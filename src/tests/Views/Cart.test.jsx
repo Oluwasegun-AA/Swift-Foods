@@ -28,7 +28,19 @@ describe('Unit test for CartPage', () => {
     const e = {
       currentTarget: {
         parentElement: {
-          children: [{}, { children: [{}, { children: [{ value: 'andela in lagos nigeria . ' }] }] }]
+          children: [{},
+            {
+              children: [{},
+                {
+                  children: [
+                    {
+                      value: 'andela in lagos nigeria . '
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
         }
       }
     };
