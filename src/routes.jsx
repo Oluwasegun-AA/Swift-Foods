@@ -11,17 +11,19 @@ import {
   ErrorPage,
   LoginPage,
   SignupPage,
-  MenuPage
+  MenuPage,
+  CartPage
 } from './views';
 
 const routes = (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={LandingPage} />
-      <Route exact path="/home" component={LandingPage} />
+      <Route exact path="/" component={HomePageRedirect(LandingPage)} />
+      <Route exact path="/home" component={HomePageRedirect(LandingPage)} />
       <Route exact path="/login" component={LoginPage} />
       <Route exact path="/signup" component={SignupPage} />
       <Route exact path="/menu" component={HomePageRedirect(MenuPage)} />
+      <Route exact path="/cart" component={HomePageRedirect(CartPage)} />
       <Route component={ErrorPage} />
     </Switch>
   </BrowserRouter>

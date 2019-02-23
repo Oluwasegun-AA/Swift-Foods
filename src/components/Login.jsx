@@ -9,16 +9,10 @@ import Button from './Button';
 const Login = ({
   onChange,
   loginHandler,
-  letterRef,
-  capitalRef,
-  numberRef,
-  lengthRef,
-  errorRef,
   onKeyUp,
   onBlur,
   onFocus,
   passwordToggle,
-  passwordRef
 }) => (
   <div className="gridContainer">
     <div className="gridTop" />
@@ -51,7 +45,6 @@ const Login = ({
               onKeyUp={onKeyUp}
               onBlur={onBlur}
               onFocus={onFocus}
-              Ref={passwordRef}
             />
             <span className="showPassword">
               <input
@@ -71,28 +64,28 @@ const Login = ({
                 <span>Not a member?   </span>
                 <Link to="/signup"> Signup</Link>
               </span>
-              <div id="errorMessage" ref={errorRef} className="errorMessage">
+              <div id="errorMessage" className="errorMessage">
                 <span className="erroMessageTitle">Password must contain :</span>
-                <h3 id="letter" ref={letterRef} className="invalid">
+                <h3 id="letter" className="invalid">
                   A
                   {' '}
                   <b>Lowercase</b>
                   {' '}
                   letter
                 </h3>
-                <h3 id="capital" ref={capitalRef} className="invalid">
+                <h3 id="capital" className="invalid">
                   A
                   {' '}
                   <b>Capital (uppercase)</b>
                   {' '}
                   letter
                 </h3>
-                <h3 id="number" ref={numberRef} className="invalid">
+                <h3 id="number" className="invalid">
                   A
                   {' '}
                   <b>Number</b>
                 </h3>
-                <h3 id="length" ref={lengthRef} className="invalid">
+                <h3 id="length" className="invalid">
                   At least
                   <b> 8 characters</b>
                 </h3>
@@ -110,12 +103,6 @@ const Login = ({
 Login.propTypes = {
   onChange: PropTypes.func.isRequired,
   loginHandler: PropTypes.func.isRequired,
-  letterRef: PropTypes.objectOf(PropTypes.any).isRequired,
-  capitalRef: PropTypes.objectOf(PropTypes.any).isRequired,
-  numberRef: PropTypes.objectOf(PropTypes.any).isRequired,
-  lengthRef: PropTypes.objectOf(PropTypes.any).isRequired,
-  passwordRef: PropTypes.objectOf(PropTypes.any).isRequired,
-  errorRef: PropTypes.objectOf(PropTypes.any).isRequired,
   onKeyUp: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
   onFocus: PropTypes.func.isRequired,

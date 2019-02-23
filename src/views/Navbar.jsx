@@ -5,7 +5,14 @@ import NavBarAuth from '../components/NavBarAuth';
 import NavBarNoAuth from '../components/NavBarNoAuth';
 import logout from '../actions/logout';
 
-class Navbar extends Component {
+export class Navbar extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      cartlength: 0
+    };
+  }
+
   onClick = (event) => {
     event.preventDefault();
     const {
@@ -29,11 +36,19 @@ class Navbar extends Component {
       }
     } = this.props;
 
+    if (localStorage.getItem('cart')) {
+      const cart = JSON.parse(localStorage.getItem('cart'));
+      const cartlength = cart.length;
+      if (this.state.cartlength < cartlength) {
+        this.setState({ cartlength });
+      }
+    }
+
     if (isAuthenticated) {
       return (
         <NavBarAuth
           signOut={signOut}
-          cartWeight={this.props.cartWeight}
+          cartWeight={this.state.cartlength === 0 ? this.props.cartWeight : this.state.cartlength}
         />
       );
     }

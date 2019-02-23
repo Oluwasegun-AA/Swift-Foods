@@ -7,7 +7,7 @@ import {
 } from '../components';
 import NavBar from './Navbar';
 
-class LandingPage extends Component {
+export class LandingPage extends Component {
   handleOnClick= () => {
     const { history } = this.props;
     history.push('/menu');
