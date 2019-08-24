@@ -8,20 +8,20 @@ const initialState = {
 
 const authReducer = (state = initialState, action = {}) => {
   switch (action.type) {
-    case SET_CURRENT_USER:
-      return {
-        isAuthenticated: action.userInfo
+  case SET_CURRENT_USER:
+    return {
+      isAuthenticated: action.userInfo
         && Object.keys(action.userInfo).length > 0,
-        userInfo: action.userInfo,
-        tokenExist: true
-      };
-    case SIGN_UP_SUCCESS:
-      return {
-        isAuthenticated: false,
-        userInfo: action.userInfo,
-        tokenExist: false
-      };
-    default: return state;
+      userInfo: action.userInfo,
+      tokenExist: true
+    };
+  case SIGN_UP_SUCCESS:
+    return {
+      isAuthenticated: false,
+      userInfo: action.userInfo,
+      tokenExist: false
+    };
+  default: return state;
   }
 };
 

@@ -1,5 +1,9 @@
 {
-  "extends": "airbnb",
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "airbnb-base"
+  ],
   "parser": "babel-eslint",
   "plugins": [
     "react",
@@ -15,8 +19,20 @@
   "env": {
     "node": true,
     "es6": true,
+    "browser": true,
     "mocha": true,
     "jest": true
+  },
+  "globals": {
+    "Materialize": true,
+    "React": true,
+    "window": true,
+    "$": true,
+    "document": true,
+    "localStorage": true,
+    "componentDidMount": true,
+    "describe": true,
+    "expect": true
   },
   "rules": {
     "max-len": [1, 80, 2],
@@ -44,17 +60,42 @@
     "import/named": 2,
     "import/namespace": 2,
     "import/default": 2,
-    "import/export": 2
-  },
-  "globals": {
-    "Materialize": true,
-    "React": true,
-    "window": true,
-    "$": true,
-    "document": true,
-    "localStorage": true,
-    "componentDidMount": true,
-    "describe": true
+    "import/export": 2,
+    "arrow-body-style": 2,
+    "prefer-const": "warn",
+    "no-trailing-spaces": "warn",
+    "class-methods-use-this": 0,
+    "semi": [
+      "error",
+      "always"
+    ],
+    "quotes": [
+      "error",
+      "single"
+    ],
+    "valid-jsdoc": [
+      "error",
+      {
+        "requireReturn": true,
+        "requireReturnType": true,
+        "requireParamDescription": false,
+        "requireReturnDescription": true
+      }
+    ],
+    "require-jsdoc": [
+      "error",
+      {
+        "require": {
+          "FunctionDeclaration": true,
+          "MethodDefinition": true,
+          "ClassDeclaration": true
+        }
+      }
+    ],
+    "indent": [
+      "error",
+      2
+    ],
   },
   "settings": {
     "import/resolver": {
