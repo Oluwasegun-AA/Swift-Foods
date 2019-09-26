@@ -14,7 +14,7 @@
 * [License](#License)
 
 ## Project Overview
-**Fast Food Fast** is a food delivery service app for restaurants. it was built from scratch using `Html` , `Css` , `JavaScript`, `react.js` and `Node.js`
+**Fast Food Fast** is a food delivery service app for restaurants. it was built from scratch using `Html` , `Css` , `JavaScript`, `React.js` and `Node.js`
 
 ## Features
 
@@ -31,10 +31,6 @@
 
 ## Demo
 ![demogif](https://user-images.githubusercontent.com/25525765/46247609-baa42400-c405-11e8-923f-3df54b87ca0e.gif)
-
-Visit [User Dashboard](https://shegsteham.github.io/Fast-Food-Fast/UI/)
-
-Visit [Admin Dashboard](https://shegsteham.github.io/Fast-Food-Fast/UI/admin.html)
 
 ## Built with
 - `HTML 5`
